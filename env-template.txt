@@ -1,0 +1,32 @@
+# VPS Configuration for Deployment
+# Copy these values to GitHub Secrets (Settings → Secrets → Actions)
+# NEVER commit actual values to git!
+
+# Required Secrets (Add to GitHub):
+VPS_HOST=your-vps-ip-address-here
+VPS_USER=your-username-here
+VPS_PORT=22
+VPS_SSH_KEY=<paste-entire-private-key-content-here>
+
+# How to get SSH Private Key:
+# 1. SSH to your VPS
+# 2. Run: cat ~/.ssh/id_rsa
+# 3. Copy entire output (including BEGIN and END lines)
+# 4. Paste in GitHub Secret: VPS_SSH_KEY
+
+# Optional Secrets:
+DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...
+
+# Domain Configuration (for reference):
+MAIN_DOMAIN=yourdomain.com
+TOOL_01_DOMAIN=passwordgen.yourdomain.com
+TOOL_02_DOMAIN=tokens.yourdomain.com
+TOOL_03_DOMAIN=json.yourdomain.com
+TOOL_04_DOMAIN=cron.yourdomain.com
+TOOL_05_DOMAIN=prompts.yourdomain.com
+TOOL_06_DOMAIN=timezone.yourdomain.com
+TOOL_07_DOMAIN=linkedin.yourdomain.com
+TOOL_08_DOMAIN=colors.yourdomain.com
+TOOL_09_DOMAIN=thumbnail.yourdomain.com
+TOOL_10_DOMAIN=qr.yourdomain.com
+

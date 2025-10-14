@@ -1,0 +1,286 @@
+name: Deploy Tools to VPS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tool-*/**'
+      - '.github/workflows/deploy.yml'
+
+jobs:
+  # Detect which tools have changed
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      tool01: ${{ steps.filter.outputs.tool01 }}
+      tool02: ${{ steps.filter.outputs.tool02 }}
+      tool03: ${{ steps.filter.outputs.tool03 }}
+      tool04: ${{ steps.filter.outputs.tool04 }}
+      tool05: ${{ steps.filter.outputs.tool05 }}
+      tool06: ${{ steps.filter.outputs.tool06 }}
+      tool07: ${{ steps.filter.outputs.tool07 }}
+      tool08: ${{ steps.filter.outputs.tool08 }}
+      tool09: ${{ steps.filter.outputs.tool09 }}
+      tool10: ${{ steps.filter.outputs.tool10 }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Detect file changes
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            tool01:
+              - 'tool-01-password-generator/**'
+            tool02:
+              - 'tool-02-token-counter/**'
+            tool03:
+              - 'tool-03-json-converter/**'
+            tool04:
+              - 'tool-04-cron-generator/**'
+            tool05:
+              - 'tool-05-ai-prompt-library/**'
+            tool06:
+              - 'tool-06-timezone-scheduler/**'
+            tool07:
+              - 'tool-07-linkedin-formatter/**'
+            tool08:
+              - 'tool-08-color-palette/**'
+            tool09:
+              - 'tool-09-thumbnail-tester/**'
+            tool10:
+              - 'tool-10-qr-code-analytics/**'
+
+  # Deploy Tool #1: Password Generator
+  deploy-tool-01:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.tool01 == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Password Generator
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            echo "🚀 Deploying Tool #1: Password Generator"
+            cd /var/www/tool-01-password-generator || exit 1
+            git pull origin main
+            npm ci --production
+            npm run build
+            pm2 restart tool-01 || pm2 start npm --name "tool-01" -- start
+            echo "✅ Tool #1 deployed successfully!"
+
+  # Deploy Tool #2: Token Counter
+  deploy-tool-02:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.tool02 == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Token Counter
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            echo "🚀 Deploying Tool #2: Token Counter"
+            cd /var/www/tool-02-token-counter || exit 1
+            git pull origin main
+            npm ci --production
+            npm run build
+            pm2 restart tool-02 || pm2 start npm --name "tool-02" -- start
+            echo "✅ Tool #2 deployed successfully!"
+
+  # Deploy Tool #3: JSON Converter
+  deploy-tool-03:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.tool03 == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy JSON Converter
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            echo "🚀 Deploying Tool #3: JSON Converter"
+            cd /var/www/tool-03-json-converter || exit 1
+            git pull origin main
+            npm ci --production
+            npm run build
+            pm2 restart tool-03 || pm2 start npm --name "tool-03" -- start
+            echo "✅ Tool #3 deployed successfully!"
+
+  # Deploy Tool #4: Cron Generator
+  deploy-tool-04:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.tool04 == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Cron Generator
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            echo "🚀 Deploying Tool #4: Cron Generator"
+            cd /var/www/tool-04-cron-generator || exit 1
+            git pull origin main
+            npm ci --production
+            npm run build
+            pm2 restart tool-04 || pm2 start npm --name "tool-04" -- start
+            echo "✅ Tool #4 deployed successfully!"
+
+  # Deploy Tool #5: AI Prompt Library
+  deploy-tool-05:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.tool05 == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy AI Prompt Library
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            echo "🚀 Deploying Tool #5: AI Prompt Library"
+            cd /var/www/tool-05-ai-prompt-library || exit 1
+            git pull origin main
+            npm ci --production
+            npm run build
+            pm2 restart tool-05 || pm2 start npm --name "tool-05" -- start
+            echo "✅ Tool #5 deployed successfully!"
+
+  # Deploy Tool #6: Time Zone Scheduler
+  deploy-tool-06:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.tool06 == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Time Zone Scheduler
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            echo "🚀 Deploying Tool #6: Time Zone Scheduler"
+            cd /var/www/tool-06-timezone-scheduler || exit 1
+            git pull origin main
+            npm ci --production
+            npm run build
+            pm2 restart tool-06 || pm2 start npm --name "tool-06" -- start
+            echo "✅ Tool #6 deployed successfully!"
+
+  # Deploy Tool #7: LinkedIn Formatter
+  deploy-tool-07:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.tool07 == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy LinkedIn Formatter
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            echo "🚀 Deploying Tool #7: LinkedIn Formatter"
+            cd /var/www/tool-07-linkedin-formatter || exit 1
+            git pull origin main
+            npm ci --production
+            npm run build
+            pm2 restart tool-07 || pm2 start npm --name "tool-07" -- start
+            echo "✅ Tool #7 deployed successfully!"
+
+  # Deploy Tool #8: Color Palette Generator
+  deploy-tool-08:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.tool08 == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Color Palette Generator
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            echo "🚀 Deploying Tool #8: Color Palette Generator"
+            cd /var/www/tool-08-color-palette || exit 1
+            git pull origin main
+            npm ci --production
+            npm run build
+            pm2 restart tool-08 || pm2 start npm --name "tool-08" -- start
+            echo "✅ Tool #8 deployed successfully!"
+
+  # Deploy Tool #9: Thumbnail Tester
+  deploy-tool-09:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.tool09 == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Thumbnail Tester
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            echo "🚀 Deploying Tool #9: Thumbnail Tester"
+            cd /var/www/tool-09-thumbnail-tester || exit 1
+            git pull origin main
+            npm ci --production
+            npm run build
+            pm2 restart tool-09 || pm2 start npm --name "tool-09" -- start
+            echo "✅ Tool #9 deployed successfully!"
+
+  # Deploy Tool #10: QR Code Analytics
+  deploy-tool-10:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.tool10 == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy QR Code Analytics
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            echo "🚀 Deploying Tool #10: QR Code Analytics"
+            cd /var/www/tool-10-qr-code-analytics || exit 1
+            git pull origin main
+            npm ci --production
+            npm run build
+            pm2 restart tool-10 || pm2 start npm --name "tool-10" -- start
+            echo "✅ Tool #10 deployed successfully!"
+
+  # Send notification after all deployments
+  notify:
+    needs: [deploy-tool-01, deploy-tool-02, deploy-tool-03, deploy-tool-04, deploy-tool-05, deploy-tool-06, deploy-tool-07, deploy-tool-08, deploy-tool-09, deploy-tool-10]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployment Complete
+        run: |
+          echo "🎉 All deployments completed!"
+          echo "Check your VPS to verify tools are running."
+
