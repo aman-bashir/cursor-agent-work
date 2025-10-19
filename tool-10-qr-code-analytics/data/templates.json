@@ -1,0 +1,114 @@
+{
+    "business": [
+        {
+            "id": "corporate-blue",
+            "name": "Corporate Blue",
+            "description": "Professional blue theme for business use",
+            "category": "business",
+            "customization": {
+                "foregroundColor": "#1e40af",
+                "backgroundColor": "#ffffff",
+                "dotStyle": "square",
+                "eyeStyle": "square"
+            },
+            "preview": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg=="
+        },
+        {
+            "id": "modern-dark",
+            "name": "Modern Dark",
+            "description": "Sleek dark theme for modern brands",
+            "category": "business",
+            "customization": {
+                "foregroundColor": "#000000",
+                "backgroundColor": "#1f2937",
+                "dotStyle": "rounded",
+                "eyeStyle": "rounded"
+            },
+            "preview": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzFmMjkzNyIvPjwvc3ZnPg=="
+        }
+    ],
+    "creative": [
+        {
+            "id": "vibrant-gradient",
+            "name": "Vibrant Gradient",
+            "description": "Colorful design for creative projects",
+            "category": "creative",
+            "customization": {
+                "foregroundColor": "#8b5cf6",
+                "backgroundColor": "#f3f4f6",
+                "dotStyle": "dots",
+                "eyeStyle": "circle"
+            },
+            "preview": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2YzZjRmNiIvPjwvc3ZnPg=="
+        },
+        {
+            "id": "retro-orange",
+            "name": "Retro Orange",
+            "description": "Vintage-inspired orange theme",
+            "category": "creative",
+            "customization": {
+                "foregroundColor": "#ea580c",
+                "backgroundColor": "#fef3c7",
+                "dotStyle": "square",
+                "eyeStyle": "square"
+            },
+            "preview": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2ZlZjNjNyIvPjwvc3ZnPg=="
+        }
+    ],
+    "minimal": [
+        {
+            "id": "clean-white",
+            "name": "Clean White",
+            "description": "Minimalist white design",
+            "category": "minimal",
+            "customization": {
+                "foregroundColor": "#374151",
+                "backgroundColor": "#ffffff",
+                "dotStyle": "square",
+                "eyeStyle": "square"
+            },
+            "preview": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2ZmZmZmZiIvPjwvc3ZnPg=="
+        },
+        {
+            "id": "soft-gray",
+            "name": "Soft Gray",
+            "description": "Gentle gray tones for subtle branding",
+            "category": "minimal",
+            "customization": {
+                "foregroundColor": "#6b7280",
+                "backgroundColor": "#f9fafb",
+                "dotStyle": "rounded",
+                "eyeStyle": "rounded"
+            },
+            "preview": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2Y5ZmFmYiIvPjwvc3ZnPg=="
+        }
+    ],
+    "colorful": [
+        {
+            "id": "sunset-pink",
+            "name": "Sunset Pink",
+            "description": "Warm pink and orange gradient feel",
+            "category": "colorful",
+            "customization": {
+                "foregroundColor": "#ec4899",
+                "backgroundColor": "#fef2f2",
+                "dotStyle": "dots",
+                "eyeStyle": "circle"
+            },
+            "preview": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2ZlZjJmMiIvPjwvc3ZnPg=="
+        },
+        {
+            "id": "ocean-blue",
+            "name": "Ocean Blue",
+            "description": "Cool blue tones like the ocean",
+            "category": "colorful",
+            "customization": {
+                "foregroundColor": "#0ea5e9",
+                "backgroundColor": "#f0f9ff",
+                "dotStyle": "rounded",
+                "eyeStyle": "rounded"
+            },
+            "preview": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2YwZjlmZiIvPjwvc3ZnPg=="
+        }
+    ]
+}
