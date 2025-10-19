@@ -1,0 +1,162 @@
+[
+  {
+    "id": "sunset",
+    "name": "Sunset",
+    "description": "Warm oranges, reds, and purples",
+    "colors": ["#FF6B6B", "#FF8E53", "#FF6B9D", "#C44569", "#F8B500"],
+    "mood": "warm",
+    "category": "nature"
+  },
+  {
+    "id": "ocean",
+    "name": "Ocean",
+    "description": "Cool blues and teals",
+    "colors": ["#4ECDC4", "#45B7D1", "#96CEB4", "#74B9FF", "#0984E3"],
+    "mood": "cool",
+    "category": "nature"
+  },
+  {
+    "id": "forest",
+    "name": "Forest",
+    "description": "Natural greens and earth tones",
+    "colors": ["#6C5CE7", "#A29BFE", "#FD79A8", "#FDCB6E", "#6C5CE7"],
+    "mood": "natural",
+    "category": "nature"
+  },
+  {
+    "id": "vintage",
+    "name": "Vintage",
+    "description": "Muted, nostalgic colors",
+    "colors": ["#DDA0DD", "#F0E68C", "#98FB98", "#F5DEB3", "#FFB6C1"],
+    "mood": "muted",
+    "category": "retro"
+  },
+  {
+    "id": "modern",
+    "name": "Modern",
+    "description": "Clean, contemporary colors",
+    "colors": ["#2D3436", "#636E72", "#74B9FF", "#A29BFE", "#FD79A8"],
+    "mood": "professional",
+    "category": "contemporary"
+  },
+  {
+    "id": "pastel",
+    "name": "Pastel",
+    "description": "Soft, gentle colors",
+    "colors": ["#FFEAA7", "#DDA0DD", "#98FB98", "#F5DEB3", "#FFB6C1"],
+    "mood": "soft",
+    "category": "gentle"
+  },
+  {
+    "id": "vibrant",
+    "name": "Vibrant",
+    "description": "Bold, energetic colors",
+    "colors": ["#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4", "#F8B500"],
+    "mood": "energetic",
+    "category": "bold"
+  },
+  {
+    "id": "monochrome",
+    "name": "Monochrome",
+    "description": "Shades of a single color",
+    "colors": ["#2D3436", "#636E72", "#74B9FF", "#A29BFE", "#FD79A8"],
+    "mood": "minimal",
+    "category": "minimalist"
+  },
+  {
+    "id": "warm",
+    "name": "Warm",
+    "description": "Cozy, inviting colors",
+    "colors": ["#FF6B6B", "#FF8E53", "#F8B500", "#FF6B9D", "#C44569"],
+    "mood": "cozy",
+    "category": "comfortable"
+  },
+  {
+    "id": "cool",
+    "name": "Cool",
+    "description": "Calm, refreshing colors",
+    "colors": ["#4ECDC4", "#45B7D1", "#74B9FF", "#A29BFE", "#6C5CE7"],
+    "mood": "calm",
+    "category": "refreshing"
+  },
+  {
+    "id": "autumn",
+    "name": "Autumn",
+    "description": "Rich fall colors",
+    "colors": ["#D63031", "#E17055", "#FDCB6E", "#6C5CE7", "#A29BFE"],
+    "mood": "rich",
+    "category": "seasonal"
+  },
+  {
+    "id": "spring",
+    "name": "Spring",
+    "description": "Fresh, blooming colors",
+    "colors": ["#00B894", "#00CEC9", "#FDCB6E", "#E17055", "#D63031"],
+    "mood": "fresh",
+    "category": "seasonal"
+  },
+  {
+    "id": "corporate",
+    "name": "Corporate",
+    "description": "Professional business colors",
+    "colors": ["#2D3436", "#636E72", "#74B9FF", "#A29BFE", "#FD79A8"],
+    "mood": "professional",
+    "category": "business"
+  },
+  {
+    "id": "playful",
+    "name": "Playful",
+    "description": "Fun, energetic colors",
+    "colors": ["#FF6B6B", "#4ECDC4", "#F8B500", "#96CEB4", "#FF6B9D"],
+    "mood": "fun",
+    "category": "entertainment"
+  },
+  {
+    "id": "minimal",
+    "name": "Minimal",
+    "description": "Clean, simple colors",
+    "colors": ["#2D3436", "#636E72", "#74B9FF", "#A29BFE", "#FD79A8"],
+    "mood": "clean",
+    "category": "minimalist"
+  },
+  {
+    "id": "luxury",
+    "name": "Luxury",
+    "description": "Rich, premium colors",
+    "colors": ["#2D3436", "#636E72", "#74B9FF", "#A29BFE", "#FD79A8"],
+    "mood": "elegant",
+    "category": "premium"
+  },
+  {
+    "id": "tech",
+    "name": "Tech",
+    "description": "Modern technology colors",
+    "colors": ["#2D3436", "#636E72", "#74B9FF", "#A29BFE", "#FD79A8"],
+    "mood": "modern",
+    "category": "technology"
+  },
+  {
+    "id": "wellness",
+    "name": "Wellness",
+    "description": "Calming, healing colors",
+    "colors": ["#4ECDC4", "#45B7D1", "#96CEB4", "#74B9FF", "#0984E3"],
+    "mood": "healing",
+    "category": "health"
+  },
+  {
+    "id": "creative",
+    "name": "Creative",
+    "description": "Artistic, inspiring colors",
+    "colors": ["#FF6B6B", "#4ECDC4", "#F8B500", "#96CEB4", "#FF6B9D"],
+    "mood": "inspiring",
+    "category": "artistic"
+  },
+  {
+    "id": "neutral",
+    "name": "Neutral",
+    "description": "Balanced, versatile colors",
+    "colors": ["#2D3436", "#636E72", "#74B9FF", "#A29BFE", "#FD79A8"],
+    "mood": "balanced",
+    "category": "versatile"
+  }
+]

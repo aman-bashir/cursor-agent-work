@@ -1,0 +1,519 @@
+[
+    {
+        "id": "blog-outline-generator",
+        "title": "Blog Post Outline Generator",
+        "description": "Create comprehensive blog post outlines with SEO optimization",
+        "content": "Create a detailed blog post outline for \"[TOPIC]\".\n\nTarget audience: [AUDIENCE]\nTone: [TONE]\nWord count goal: [COUNT]\n\nInclude:\n- Compelling headline with SEO keywords\n- Introduction hook\n- 5-7 main sections with subsections\n- Key points for each section\n- Conclusion with CTA\n\nMake it engaging and SEO-optimized.",
+        "category": [
+            "Content Writing"
+        ],
+        "tags": [
+            "blog",
+            "outline",
+            "seo",
+            "content strategy"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet",
+            "gemini-1.5-pro"
+        ],
+        "difficulty": "beginner",
+        "example": {
+            "input": "Topic: Remote Work Productivity\nAudience: Software developers\nTone: Professional but friendly\nWord count: 2000",
+            "output": "**Headline:** \"10 Proven Strategies to Boost Your Remote Work Productivity as a Developer\"\n\n**Introduction:** Hook with surprising statistic about remote work productivity...\n\n**Section 1:** Setting Up Your Workspace\n- Ergonomic considerations\n- Distraction-free environment\n- Essential tools and software\n\n**Section 2:** Time Management Techniques\n- Pomodoro technique for coding\n- Time-blocking strategies\n- Task prioritization methods\n\n[Continue with 5 more sections...]"
+        },
+        "tips": [
+            "Be specific about your audience",
+            "Mention your brand voice",
+            "Include any keywords you want to target"
+        ],
+        "views": 1250,
+        "favorites": 89,
+        "createdAt": "2024-01-15T10:00:00Z"
+    },
+    {
+        "id": "social-media-post-generator",
+        "title": "Social Media Post Generator",
+        "description": "Generate engaging social media posts for any platform",
+        "content": "Create a [PLATFORM] post about [TOPIC].\n\nBrand voice: [VOICE]\nTarget audience: [AUDIENCE]\nPost goal: [GOAL] (awareness, engagement, sales, etc.)\n\nInclude:\n- Attention-grabbing hook\n- Clear value proposition\n- Call-to-action\n- Relevant hashtags (3-5)\n- Emoji usage (sparingly)\n\nKeep it under [CHARACTER_LIMIT] characters.",
+        "category": [
+            "Content Writing",
+            "Marketing"
+        ],
+        "tags": [
+            "social media",
+            "content",
+            "engagement",
+            "marketing"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet"
+        ],
+        "difficulty": "beginner",
+        "example": {
+            "input": "Platform: LinkedIn\nTopic: AI tools for productivity\nVoice: Professional and helpful\nAudience: Business professionals\nGoal: awareness\nCharacter limit: 300",
+            "output": "🚀 The AI productivity revolution is here!\n\nI've tested 50+ AI tools this year, and these 3 have transformed how I work:\n\n✅ ChatGPT for content creation\n✅ Notion AI for note-taking\n✅ Grammarly for writing\n\nResult? 40% faster output, better quality.\n\nWhat's your favorite AI productivity tool? Drop it below! 👇\n\n#AI #Productivity #BusinessTools #Innovation"
+        },
+        "tips": [
+            "Match the platform's tone and style",
+            "Use platform-specific features (polls, stories, etc.)",
+            "Include a clear call-to-action"
+        ],
+        "views": 2100,
+        "favorites": 156,
+        "createdAt": "2024-01-10T14:30:00Z"
+    },
+    {
+        "id": "email-campaign-generator",
+        "title": "Email Campaign Generator",
+        "description": "Create compelling email marketing campaigns",
+        "content": "Create an email campaign for [PRODUCT/SERVICE].\n\nCampaign type: [TYPE] (welcome, nurture, promotional, re-engagement)\nTarget audience: [AUDIENCE]\nGoal: [GOAL]\n\nStructure:\n- Subject line (3 options)\n- Preheader text\n- Email body with:\n  - Opening hook\n  - Value proposition\n  - Social proof\n  - Clear CTA\n  - P.S. section\n\nTone: [TONE]\nLength: [LENGTH]",
+        "category": [
+            "Marketing",
+            "Content Writing"
+        ],
+        "tags": [
+            "email",
+            "marketing",
+            "campaign",
+            "conversion"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet"
+        ],
+        "difficulty": "intermediate",
+        "example": {
+            "input": "Product: Online course on digital marketing\nType: nurture\nAudience: Small business owners\nGoal: drive course enrollment\nTone: helpful and encouraging\nLength: medium",
+            "output": "**Subject Lines:**\n1. \"The #1 mistake killing your online presence\"\n2. \"Why 90% of small businesses fail at digital marketing\"\n3. \"Your digital marketing roadmap (free inside)\"\n\n**Preheader:** Don't let your competition get ahead...\n\n**Email Body:**\nHi [Name],\n\nI've worked with 500+ small businesses, and I see the same mistake over and over...\n\n[Continue with full email structure...]"
+        },
+        "tips": [
+            "Test different subject lines",
+            "Personalize when possible",
+            "Keep mobile-friendly formatting"
+        ],
+        "views": 1800,
+        "favorites": 134,
+        "createdAt": "2024-01-12T09:15:00Z"
+    },
+    {
+        "id": "ad-copy-generator",
+        "title": "Ad Copy Generator",
+        "description": "Generate high-converting ad copy for any platform",
+        "content": "Create ad copy for [PRODUCT/SERVICE] on [PLATFORM].\n\nCampaign objective: [OBJECTIVE] (awareness, traffic, conversions, etc.)\nTarget audience: [AUDIENCE]\nBudget: [BUDGET]\n\nCreate:\n- Headline (3 variations)\n- Description (2 variations)\n- Call-to-action\n- Key benefits (3-5)\n- Pain points to address\n\nTone: [TONE]\nCharacter limits: [LIMITS]",
+        "category": [
+            "Marketing"
+        ],
+        "tags": [
+            "advertising",
+            "copywriting",
+            "conversion",
+            "ppc"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet"
+        ],
+        "difficulty": "intermediate",
+        "example": {
+            "input": "Product: Project management software\nPlatform: Google Ads\nObjective: conversions\nAudience: Small business owners\nBudget: $1000/month\nTone: professional and results-focused",
+            "output": "**Headlines:**\n1. \"Stop Losing Money on Disorganized Projects\"\n2. \"Project Management That Actually Works\"\n3. \"Get Projects Done On Time, Every Time\"\n\n**Descriptions:**\n1. \"Join 10,000+ businesses using our simple project management tool. Free trial, no credit card required.\"\n2. \"Finally, a project management solution that your team will actually use. See results in 24 hours.\"\n\n**CTA:** Start Free Trial\n**Benefits:** Easy setup, team collaboration, real-time tracking, mobile access"
+        },
+        "tips": [
+            "Focus on benefits, not features",
+            "Use emotional triggers",
+            "Test multiple variations"
+        ],
+        "views": 1650,
+        "favorites": 98,
+        "createdAt": "2024-01-08T16:45:00Z"
+    },
+    {
+        "id": "code-documentation-generator",
+        "title": "Code Documentation Generator",
+        "description": "Generate comprehensive code documentation and comments",
+        "content": "Generate documentation for this [LANGUAGE] code:\n\n```[LANGUAGE]\n[CODE]\n```\n\nInclude:\n- Function/class description\n- Parameter documentation\n- Return value explanation\n- Usage examples\n- Error handling notes\n- Performance considerations\n\nStyle: [STYLE] (JSDoc, Sphinx, etc.)\nDetail level: [LEVEL] (basic, comprehensive, expert)",
+        "category": [
+            "Development"
+        ],
+        "tags": [
+            "documentation",
+            "code",
+            "comments",
+            "api"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet",
+            "gemini-1.5-pro"
+        ],
+        "difficulty": "intermediate",
+        "example": {
+            "input": "Language: Python\nCode: def calculate_fibonacci(n):\n    if n <= 1:\n        return n\n    return calculate_fibonacci(n-1) + calculate_fibonacci(n-2)\nStyle: Google docstring\nLevel: comprehensive",
+            "output": "\"\"\"\nCalculate the nth Fibonacci number using recursion.\n\nArgs:\n    n (int): The position in the Fibonacci sequence (0-indexed).\n        Must be a non-negative integer.\n\nReturns:\n    int: The nth Fibonacci number.\n        F(0) = 0, F(1) = 1, F(n) = F(n-1) + F(n-2)\n\nRaises:\n    ValueError: If n is negative.\n    RecursionError: If n is too large (typically > 1000).\n\nExample:\n    >>> calculate_fibonacci(10)\n    55\n    >>> calculate_fibonacci(0)\n    0\n\nNote:\n    This implementation uses recursion and has O(2^n) time complexity.\n    For better performance with large numbers, consider iterative approach.\n\"\"\""
+        },
+        "tips": [
+            "Include edge cases in examples",
+            "Document performance implications",
+            "Use consistent formatting"
+        ],
+        "views": 2200,
+        "favorites": 187,
+        "createdAt": "2024-01-05T11:20:00Z"
+    },
+    {
+        "id": "code-review-assistant",
+        "title": "Code Review Assistant",
+        "description": "Get AI-powered code review suggestions and improvements",
+        "content": "Review this [LANGUAGE] code and provide feedback:\n\n```[LANGUAGE]\n[CODE]\n```\n\nFocus on:\n- Code quality and best practices\n- Performance optimizations\n- Security vulnerabilities\n- Readability and maintainability\n- Error handling\n- Testing recommendations\n\nStyle guide: [STYLE_GUIDE]\nExperience level: [LEVEL] (junior, mid, senior)",
+        "category": [
+            "Development"
+        ],
+        "tags": [
+            "code review",
+            "best practices",
+            "optimization",
+            "security"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet"
+        ],
+        "difficulty": "advanced",
+        "example": {
+            "input": "Language: JavaScript\nCode: function getUserData(id) {\n  fetch('/api/users/' + id)\n    .then(response => response.json())\n    .then(data => console.log(data));\n}\nStyle guide: Airbnb\nLevel: mid",
+            "output": "**Issues Found:**\n\n1. **Security**: SQL injection risk with string concatenation\n2. **Error Handling**: No error handling for network failures\n3. **Async/Await**: Consider using async/await for better readability\n4. **Return Value**: Function doesn't return anything\n\n**Improved Version:**\n```javascript\nasync function getUserData(id) {\n  try {\n    const response = await fetch(`/api/users/${id}`);\n    if (!response.ok) {\n      throw new Error(`HTTP error! status: ${response.status}`);\n    }\n    const data = await response.json();\n    return data;\n  } catch (error) {\n    console.error('Failed to fetch user data:', error);\n    throw error;\n  }\n}\n```"
+        },
+        "tips": [
+            "Always consider security implications",
+            "Suggest specific improvements",
+            "Include performance considerations"
+        ],
+        "views": 1950,
+        "favorites": 145,
+        "createdAt": "2024-01-03T13:10:00Z"
+    },
+    {
+        "id": "business-plan-generator",
+        "title": "Business Plan Generator",
+        "description": "Create comprehensive business plans and strategies",
+        "content": "Create a business plan for [BUSINESS_TYPE] in the [INDUSTRY] industry.\n\nBusiness name: [NAME]\nTarget market: [MARKET]\nFunding needed: [FUNDING]\nTimeline: [TIMELINE]\n\nInclude:\n- Executive summary\n- Market analysis\n- Competitive analysis\n- Marketing strategy\n- Operations plan\n- Financial projections (3 years)\n- Risk assessment\n- Funding requirements\n\nFormat: [FORMAT] (executive, detailed, pitch deck)",
+        "category": [
+            "Business"
+        ],
+        "tags": [
+            "business plan",
+            "strategy",
+            "funding",
+            "startup"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet"
+        ],
+        "difficulty": "advanced",
+        "example": {
+            "input": "Business type: SaaS platform\nIndustry: project management\nName: TaskFlow Pro\nMarket: small to medium businesses\nFunding: $500,000\nTimeline: 18 months\nFormat: detailed",
+            "output": "**Executive Summary**\nTaskFlow Pro is a cloud-based project management platform designed specifically for SMBs...\n\n**Market Analysis**\n- Total Addressable Market: $4.2B\n- Serviceable Addressable Market: $1.1B\n- Target customer segments: 50-500 employee companies\n\n**Competitive Analysis**\n- Direct competitors: Asana, Monday.com, Trello\n- Competitive advantage: AI-powered automation\n\n[Continue with full business plan structure...]"
+        },
+        "tips": [
+            "Include specific market data",
+            "Address potential risks",
+            "Provide realistic financial projections"
+        ],
+        "views": 1400,
+        "favorites": 112,
+        "createdAt": "2024-01-20T08:30:00Z"
+    },
+    {
+        "id": "market-research-analyzer",
+        "title": "Market Research Analyzer",
+        "description": "Analyze market data and generate insights",
+        "content": "Analyze the market research data for [PRODUCT/SERVICE] in [MARKET].\n\nData provided:\n[DATA]\n\nProvide analysis on:\n- Market size and growth trends\n- Customer segments and personas\n- Competitive landscape\n- Opportunities and threats\n- Pricing analysis\n- Distribution channels\n- Recommendations\n\nFormat: [FORMAT] (executive summary, detailed report, presentation)",
+        "category": [
+            "Business",
+            "Marketing"
+        ],
+        "tags": [
+            "market research",
+            "analysis",
+            "strategy",
+            "insights"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet"
+        ],
+        "difficulty": "advanced",
+        "example": {
+            "input": "Product: Electric vehicles\nMarket: European automotive\nData: Market size $45B, 15% annual growth, 12 major competitors\nFormat: executive summary",
+            "output": "**Market Overview**\nThe European EV market is experiencing rapid growth with a 15% CAGR, driven by government incentives and environmental regulations...\n\n**Key Insights:**\n1. **Market Size**: $45B with strong growth trajectory\n2. **Customer Segments**: Early adopters (25%), mainstream (60%), price-sensitive (15%)\n3. **Competitive Landscape**: Tesla leads premium segment, local manufacturers dominate mid-market\n\n**Recommendations:**\n- Focus on charging infrastructure partnerships\n- Target mainstream segment with competitive pricing\n- Leverage government incentive programs"
+        },
+        "tips": [
+            "Use data to support conclusions",
+            "Identify actionable insights",
+            "Consider market dynamics"
+        ],
+        "views": 1200,
+        "favorites": 89,
+        "createdAt": "2024-01-18T15:45:00Z"
+    },
+    {
+        "id": "creative-story-generator",
+        "title": "Creative Story Generator",
+        "description": "Generate creative stories, scripts, and narratives",
+        "content": "Write a [GENRE] story about [THEME].\n\nCharacters: [CHARACTERS]\nSetting: [SETTING]\nLength: [LENGTH] (short story, novella, screenplay)\nTone: [TONE]\nTarget audience: [AUDIENCE]\n\nInclude:\n- Compelling opening\n- Character development\n- Plot structure (beginning, middle, end)\n- Dialogue (if applicable)\n- Theme exploration\n- Satisfying conclusion\n\nStyle: [STYLE]",
+        "category": [
+            "Creative"
+        ],
+        "tags": [
+            "storytelling",
+            "creative writing",
+            "narrative",
+            "fiction"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet"
+        ],
+        "difficulty": "intermediate",
+        "example": {
+            "input": "Genre: Science fiction\nTheme: time travel consequences\nCharacters: A scientist and their past self\nSetting: Near-future laboratory\nLength: short story\nTone: thought-provoking\nAudience: adults\nStyle: literary",
+            "output": "**The Paradox Protocol**\n\nDr. Elena Vasquez stared at the quantum chronometer, her reflection distorted in its curved surface. The numbers blinked: 14:32:17. In exactly three minutes, she would become the first human to successfully travel back in time...\n\n[Continue with full story structure including character development, plot progression, and thematic exploration...]"
+        },
+        "tips": [
+            "Develop compelling characters",
+            "Create engaging dialogue",
+            "Maintain consistent tone"
+        ],
+        "views": 2800,
+        "favorites": 234,
+        "createdAt": "2024-01-14T12:00:00Z"
+    },
+    {
+        "id": "screenplay-writer",
+        "title": "Screenplay Writer",
+        "description": "Generate professional screenplay formats and scripts",
+        "content": "Write a [TYPE] screenplay about [CONCEPT].\n\nGenre: [GENRE]\nLength: [LENGTH] (short film, feature, TV episode)\nFormat: [FORMAT] (comedy, drama, thriller, etc.)\nTarget audience: [AUDIENCE]\n\nStructure:\n- Title page\n- Character descriptions\n- Scene headings\n- Action lines\n- Dialogue\n- Transitions\n\nInclude:\n- Three-act structure\n- Character arcs\n- Visual storytelling\n- Proper formatting",
+        "category": [
+            "Creative"
+        ],
+        "tags": [
+            "screenplay",
+            "script",
+            "film",
+            "television"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet"
+        ],
+        "difficulty": "advanced",
+        "example": {
+            "input": "Type: short film\nConcept: A person discovers they can hear other people's thoughts\nGenre: drama\nLength: 10 minutes\nFormat: psychological drama\nAudience: film festival",
+            "output": "**FADE IN:**\n\n**INT. COFFEE SHOP - MORNING**\n\nSARAH (30s, unassuming, reading a book) sits alone at a corner table. The shop buzzes with morning commuters.\n\n**SARAH**\n(thinking)\nI wonder if anyone else feels this lonely in a crowd...\n\nSuddenly, she hears:\n\n**VOICE (V.O.)**\n(whispered)\n\"I hope my presentation goes well today...\"\n\nSarah looks up, confused. The voice wasn't spoken aloud.\n\n[Continue with proper screenplay formatting...]"
+        },
+        "tips": [
+            "Use proper screenplay formatting",
+            "Show, don't tell",
+            "Create visual scenes"
+        ],
+        "views": 1600,
+        "favorites": 128,
+        "createdAt": "2024-01-16T10:30:00Z"
+    },
+    {
+        "id": "lesson-plan-generator",
+        "title": "Lesson Plan Generator",
+        "description": "Create comprehensive educational lesson plans",
+        "content": "Create a lesson plan for [SUBJECT] at [GRADE_LEVEL].\n\nTopic: [TOPIC]\nDuration: [DURATION] minutes\nLearning objectives: [OBJECTIVES]\nTeaching method: [METHOD]\n\nInclude:\n- Learning objectives (SMART goals)\n- Materials needed\n- Introduction/hook\n- Main activities\n- Assessment methods\n- Differentiation strategies\n- Homework/extension activities\n- Reflection questions\n\nStandards: [STANDARDS]",
+        "category": [
+            "Education"
+        ],
+        "tags": [
+            "education",
+            "lesson planning",
+            "teaching",
+            "curriculum"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet"
+        ],
+        "difficulty": "intermediate",
+        "example": {
+            "input": "Subject: Science\nGrade level: 5th grade\nTopic: Photosynthesis\nDuration: 45 minutes\nObjectives: Students will understand how plants make food\nMethod: hands-on experiment\nStandards: NGSS",
+            "output": "**Learning Objectives:**\n- Students will explain the process of photosynthesis\n- Students will identify the components needed for photosynthesis\n- Students will conduct a simple experiment to observe plant growth\n\n**Materials:**\n- Small plants (bean sprouts)\n- Clear plastic bags\n- Water\n- Light source\n- Observation sheets\n\n**Introduction (5 minutes):**\n\"Today we're going to discover how plants make their own food...\"\n\n**Main Activity (30 minutes):**\n1. Set up experiment with different conditions\n2. Make predictions\n3. Observe and record changes\n\n**Assessment:**\n- Exit ticket: Draw and label the photosynthesis process"
+        },
+        "tips": [
+            "Align with curriculum standards",
+            "Include hands-on activities",
+            "Plan for different learning styles"
+        ],
+        "views": 1900,
+        "favorites": 156,
+        "createdAt": "2024-01-11T14:20:00Z"
+    },
+    {
+        "id": "study-guide-generator",
+        "title": "Study Guide Generator",
+        "description": "Generate comprehensive study guides and summaries",
+        "content": "Create a study guide for [SUBJECT] covering [TOPICS].\n\nLevel: [LEVEL] (high school, college, graduate)\nFormat: [FORMAT] (outline, flashcards, summary, practice questions)\nFocus: [FOCUS] (exam prep, general review, specific concepts)\n\nInclude:\n- Key concepts and definitions\n- Important formulas/theorems\n- Examples and practice problems\n- Study strategies\n- Common mistakes to avoid\n- Review questions\n- Additional resources\n\nLength: [LENGTH]",
+        "category": [
+            "Education"
+        ],
+        "tags": [
+            "study guide",
+            "education",
+            "exam prep",
+            "learning"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet"
+        ],
+        "difficulty": "intermediate",
+        "example": {
+            "input": "Subject: Biology\nTopics: Cell biology, genetics, evolution\nLevel: college\nFormat: comprehensive outline\nFocus: exam prep\nLength: detailed",
+            "output": "**Cell Biology Study Guide**\n\n**1. Cell Structure and Function**\n- Prokaryotic vs. Eukaryotic cells\n- Organelles and their functions\n- Cell membrane structure and transport\n\n**Key Concepts:**\n- **Cell Theory**: All living things are made of cells\n- **Organelles**: Mitochondria (energy), Nucleus (DNA), ER (protein synthesis)\n\n**Practice Questions:**\n1. Compare and contrast plant and animal cells\n2. Explain the process of osmosis\n\n**Study Tips:**\n- Create diagrams of cell structures\n- Use mnemonics for organelle functions\n- Practice with microscope slides"
+        },
+        "tips": [
+            "Break down complex topics",
+            "Include visual aids",
+            "Provide practice opportunities"
+        ],
+        "views": 2400,
+        "favorites": 198,
+        "createdAt": "2024-01-09T11:45:00Z"
+    },
+    {
+        "id": "seo-keyword-research",
+        "title": "SEO Keyword Research Assistant",
+        "description": "Generate SEO keyword strategies and content ideas",
+        "content": "Conduct keyword research for [INDUSTRY/TOPIC].\n\nWebsite: [WEBSITE]\nTarget audience: [AUDIENCE]\nGeographic focus: [LOCATION]\nBudget: [BUDGET]\n\nProvide:\n- Primary keywords (5-10)\n- Long-tail keywords (15-20)\n- Keyword difficulty scores\n- Search volume estimates\n- Competitor analysis\n- Content gap opportunities\n- Local SEO keywords (if applicable)\n- Content ideas for each keyword\n\nTools to consider: [TOOLS]",
+        "category": [
+            "SEO"
+        ],
+        "tags": [
+            "seo",
+            "keywords",
+            "research",
+            "content strategy"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet"
+        ],
+        "difficulty": "intermediate",
+        "example": {
+            "input": "Industry: Digital marketing\nWebsite: marketing agency\nAudience: small businesses\nLocation: United States\nBudget: $2000/month\nTools: SEMrush, Ahrefs",
+            "output": "**Primary Keywords:**\n1. \"digital marketing services\" (KD: 45, Volume: 8,100)\n2. \"small business marketing\" (KD: 38, Volume: 5,400)\n3. \"online marketing agency\" (KD: 52, Volume: 3,600)\n\n**Long-tail Keywords:**\n1. \"digital marketing services for small business\" (KD: 25, Volume: 1,200)\n2. \"affordable online marketing agency\" (KD: 30, Volume: 890)\n3. \"local digital marketing company\" (KD: 20, Volume: 720)\n\n**Content Ideas:**\n- \"Complete Guide to Digital Marketing for Small Businesses\"\n- \"10 Affordable Marketing Strategies for Local Businesses\"\n- \"How to Choose the Right Digital Marketing Agency\""
+        },
+        "tips": [
+            "Focus on user intent",
+            "Consider local variations",
+            "Analyze competitor gaps"
+        ],
+        "views": 2100,
+        "favorites": 167,
+        "createdAt": "2024-01-07T16:15:00Z"
+    },
+    {
+        "id": "meta-description-optimizer",
+        "title": "Meta Description Optimizer",
+        "description": "Create compelling meta descriptions for better click-through rates",
+        "content": "Create optimized meta descriptions for [PAGE_TYPE] about [TOPIC].\n\nTarget keyword: [KEYWORD]\nCharacter limit: [LIMIT] (usually 155-160)\nTone: [TONE]\nCall-to-action: [CTA]\n\nRequirements:\n- Include target keyword naturally\n- Compelling and click-worthy\n- Clear value proposition\n- Include CTA\n- Unique for each page\n- Mobile-friendly\n\nCreate [COUNT] variations",
+        "category": [
+            "SEO"
+        ],
+        "tags": [
+            "seo",
+            "meta description",
+            "click-through rate",
+            "optimization"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet"
+        ],
+        "difficulty": "beginner",
+        "example": {
+            "input": "Page type: blog post\nTopic: email marketing tips\nKeyword: email marketing\nLimit: 155\nTone: helpful and professional\nCTA: learn more\nCount: 3",
+            "output": "**Variation 1:**\n\"Discover 15 proven email marketing tips that boost open rates by 40%. Learn segmentation, subject lines, and automation strategies. Start improving your campaigns today!\"\n\n**Variation 2:**\n\"Email marketing made simple! Get expert tips on list building, automation, and design. Increase your ROI with these actionable strategies. Read the complete guide.\"\n\n**Variation 3:**\n\"Transform your email marketing with these 15 expert-backed strategies. From subject lines to automation, learn what works in 2024. Get started now!\""
+        },
+        "tips": [
+            "Test different CTAs",
+            "Use emotional triggers",
+            "Include numbers when possible"
+        ],
+        "views": 1750,
+        "favorites": 134,
+        "createdAt": "2024-01-13T09:30:00Z"
+    },
+    {
+        "id": "career-advice-generator",
+        "title": "Career Advice Generator",
+        "description": "Get personalized career guidance and development tips",
+        "content": "Provide career advice for someone in [INDUSTRY] with [EXPERIENCE] years of experience.\n\nCurrent role: [ROLE]\nCareer goals: [GOALS]\nChallenges: [CHALLENGES]\nSkills: [SKILLS]\n\nAdvice areas:\n- Career progression path\n- Skill development recommendations\n- Networking strategies\n- Industry trends to watch\n- Salary negotiation tips\n- Work-life balance\n- Professional development resources\n\nFormat: [FORMAT] (action plan, general advice, specific steps)",
+        "category": [
+            "Personal"
+        ],
+        "tags": [
+            "career",
+            "advice",
+            "development",
+            "professional growth"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet"
+        ],
+        "difficulty": "intermediate",
+        "example": {
+            "input": "Industry: Technology\nExperience: 3 years\nRole: Software Developer\nGoals: become a senior developer\nChallenges: imposter syndrome, unclear promotion path\nSkills: JavaScript, React, Node.js\nFormat: action plan",
+            "output": "**Career Progression Path:**\n1. **Next 6 months**: Focus on system design and architecture\n2. **6-12 months**: Lead a small project or mentor junior developers\n3. **1-2 years**: Apply for senior developer positions\n\n**Skill Development:**\n- Learn system design patterns\n- Practice technical interviews\n- Contribute to open source projects\n- Take on code review responsibilities\n\n**Networking:**\n- Attend local tech meetups\n- Join online developer communities\n- Connect with senior developers on LinkedIn\n\n**Overcoming Imposter Syndrome:**\n- Document your achievements\n- Seek feedback regularly\n- Remember that learning is continuous"
+        },
+        "tips": [
+            "Be specific about goals",
+            "Include actionable steps",
+            "Address current challenges"
+        ],
+        "views": 2200,
+        "favorites": 189,
+        "createdAt": "2024-01-17T13:45:00Z"
+    },
+    {
+        "id": "productivity-system-builder",
+        "title": "Productivity System Builder",
+        "description": "Create personalized productivity systems and workflows",
+        "content": "Design a productivity system for [PROFESSION] with [WORKSTYLE] work style.\n\nGoals: [GOALS]\nChallenges: [CHALLENGES]\nTools available: [TOOLS]\nTime constraints: [TIME]\n\nInclude:\n- Daily/weekly routines\n- Task management system\n- Time blocking strategies\n- Energy management\n- Distraction elimination\n- Review and reflection processes\n- Tool recommendations\n- Habit formation strategies\n\nFocus: [FOCUS] (time management, energy, focus, organization)",
+        "category": [
+            "Personal"
+        ],
+        "tags": [
+            "productivity",
+            "time management",
+            "workflow",
+            "organization"
+        ],
+        "aiModel": [
+            "gpt-4",
+            "claude-3.5-sonnet"
+        ],
+        "difficulty": "intermediate",
+        "example": {
+            "input": "Profession: Content Creator\nWorkstyle: remote, flexible hours\nGoals: publish 3 articles per week, grow audience\nChallenges: procrastination, social media distraction\nTools: Notion, Google Calendar, Focus apps\nTime: 6 hours/day\nFocus: time management and focus",
+            "output": "**Daily Routine:**\n- 8:00 AM: Deep work block (writing)\n- 10:00 AM: Break and social media check\n- 10:30 AM: Research and planning\n- 12:00 PM: Lunch break\n- 1:00 PM: Content creation (videos/graphics)\n- 3:00 PM: Email and admin tasks\n- 4:00 PM: Social media engagement\n\n**Task Management:**\n- Use Notion for content calendar\n- Batch similar tasks together\n- Set specific time limits for each task\n\n**Focus Strategies:**\n- Use website blockers during deep work\n- Phone in another room\n- Pomodoro technique for writing sessions"
+        },
+        "tips": [
+            "Start with small changes",
+            "Track what works",
+            "Adjust based on results"
+        ],
+        "views": 1950,
+        "favorites": 156,
+        "createdAt": "2024-01-19T10:15:00Z"
+    }
+]

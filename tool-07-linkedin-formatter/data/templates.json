@@ -1,0 +1,272 @@
+[
+  {
+    "id": "personal-story",
+    "name": "Personal Story",
+    "category": "Storytelling",
+    "description": "Share a personal experience with a lesson learned",
+    "template": "I made a $[AMOUNT] mistake.\n\nHere's what happened:\n\n[STORY PARAGRAPH 1]\n\n[STORY PARAGRAPH 2]\n\nThe lesson?\n\n[KEY TAKEAWAY]\n\nHave you experienced this?\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "I made a $50,000 mistake.\n\nHere's what happened:\n\nI hired the wrong person for a critical role. They seemed perfect on paper - great resume, impressive references, said all the right things.\n\nBut within 3 months, they were causing more problems than they were solving. Team morale dropped, projects were delayed, and I had to let them go.\n\nThe lesson?\n\nSkills matter, but culture fit matters more. A great resume means nothing if they can't work well with your team.\n\nHave you experienced this?\n\n#Leadership #Hiring #TeamBuilding",
+    "bestFor": "Building authority, sharing lessons",
+    "engagement": "High"
+  },
+  {
+    "id": "list-post",
+    "name": "List Post",
+    "category": "Educational",
+    "description": "Share multiple points in an organized list",
+    "template": "[NUMBER] things I wish I knew about [TOPIC]:\n\n1. [POINT 1]\nExplanation...\n\n2. [POINT 2]\nExplanation...\n\n3. [POINT 3]\nExplanation...\n\nWhich one resonates most?\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "5 things I wish I knew about remote work:\n\n1. Communication is everything\nYou can't over-communicate. What seems obvious to you might not be to others.\n\n2. Trust your team\nMicromanaging kills productivity. Set clear expectations and let people work.\n\n3. Invest in the right tools\nGood software pays for itself in productivity gains.\n\n4. Schedule regular check-ins\nNot just about work - check on people's wellbeing too.\n\n5. Document everything\nProcesses, decisions, meeting notes. You'll thank yourself later.\n\nWhich one resonates most?\n\n#RemoteWork #Leadership #Productivity",
+    "bestFor": "Education, value-packed content",
+    "engagement": "High"
+  },
+  {
+    "id": "hot-take",
+    "name": "Hot Take",
+    "category": "Opinion",
+    "description": "Share a controversial or bold opinion",
+    "template": "Hot take: [CONTROVERSIAL STATEMENT]\n\nHere's why:\n\n[REASON 1]\n\n[REASON 2]\n\n[REASON 3]\n\nI know this will be unpopular, but I've seen it work.\n\nWhat do you think?\n\n#[HASHTAG1] #[HASHTAG2]",
+    "example": "Hot take: Most networking events are a waste of time.\n\nHere's why:\n\n1. You meet 50 people, remember 2\n2. Everyone's trying to sell something\n3. The real connections happen in follow-up conversations\n\nI've gotten more business from one thoughtful LinkedIn message than from 10 networking events.\n\nI know this will be unpopular, but I've seen it work.\n\nWhat do you think?\n\n#Networking #Business #Opinion",
+    "bestFor": "Generating discussion, building personal brand",
+    "engagement": "Very High"
+  },
+  {
+    "id": "how-to-guide",
+    "name": "How-To Guide",
+    "category": "Educational",
+    "description": "Step-by-step instructions for a specific task",
+    "template": "How to [ACHIEVE GOAL] in [TIME FRAME]:\n\nStep 1: [FIRST STEP]\n[Explanation]\n\nStep 2: [SECOND STEP]\n[Explanation]\n\nStep 3: [THIRD STEP]\n[Explanation]\n\nPro tip: [BONUS TIP]\n\nTry this and let me know how it goes!\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "How to increase your LinkedIn engagement in 30 days:\n\nStep 1: Post consistently\nAim for 3-5 posts per week. Quality over quantity, but consistency is key.\n\nStep 2: Engage with others first\nSpend 15 minutes daily commenting on others' posts before posting your own.\n\nStep 3: Ask questions in your posts\nEnd with a question to encourage comments and discussion.\n\nPro tip: Post when your audience is most active (usually 8-9 AM or 5-6 PM).\n\nTry this and let me know how it goes!\n\n#LinkedInTips #SocialMedia #Engagement",
+    "bestFor": "Teaching, building expertise",
+    "engagement": "Medium"
+  },
+  {
+    "id": "case-study",
+    "name": "Case Study",
+    "category": "Results",
+    "description": "Share a specific example with measurable results",
+    "template": "Case study: How [PERSON/COMPANY] achieved [RESULT]\n\nChallenge:\n[PROBLEM DESCRIPTION]\n\nSolution:\n[WHAT WAS DONE]\n\nResults:\n• [RESULT 1]\n• [RESULT 2]\n• [RESULT 3]\n\nKey takeaway: [LESSON LEARNED]\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "Case study: How Sarah increased her sales by 300% in 6 months\n\nChallenge:\nSarah was struggling to close deals. Her conversion rate was only 5% and she was working 60+ hours per week.\n\nSolution:\nShe implemented a new follow-up system:\n• Automated email sequences\n• Personalized LinkedIn outreach\n• Value-first approach instead of sales-first\n\nResults:\n• 300% increase in sales\n• 40% reduction in working hours\n• 95% client satisfaction rate\n\nKey takeaway: Systems beat hustle every time.\n\n#Sales #CaseStudy #Success",
+    "bestFor": "Building credibility, showing results",
+    "engagement": "High"
+  },
+  {
+    "id": "question-post",
+    "name": "Question Post",
+    "category": "Engagement",
+    "description": "Ask a question to generate discussion",
+    "template": "Quick question for the community:\n\n[QUESTION]\n\nI'm curious because [CONTEXT/REASON]\n\nDrop your thoughts below 👇\n\n#[HASHTAG1] #[HASHTAG2]",
+    "example": "Quick question for the community:\n\nWhat's the biggest mistake you made in your career?\n\nI'm curious because I think we learn more from failures than successes, but we rarely talk about them openly.\n\nDrop your thoughts below 👇\n\n#Career #Learning #Community",
+    "bestFor": "Generating engagement, community building",
+    "engagement": "Very High"
+  },
+  {
+    "id": "lesson-learned",
+    "name": "Lesson Learned",
+    "category": "Storytelling",
+    "description": "Share a key lesson from experience",
+    "template": "[TIME PERIOD] ago, I learned this the hard way:\n\n[LESSON]\n\nThe story:\n[SHORT STORY]\n\nNow I always [NEW BEHAVIOR]\n\nWhat's a lesson you learned the hard way?\n\n#[HASHTAG1] #[HASHTAG2]",
+    "example": "2 years ago, I learned this the hard way:\n\nYou can't please everyone, and trying to will kill your business.\n\nThe story:\nI was so focused on making every client happy that I was working 80-hour weeks, undercharging, and saying yes to everything.\n\nI burned out, my team was frustrated, and my best clients left because I couldn't give them the attention they deserved.\n\nNow I always focus on serving my ideal clients exceptionally well, even if it means saying no to others.\n\nWhat's a lesson you learned the hard way?\n\n#Business #Leadership #Lessons",
+    "bestFor": "Building relatability, sharing wisdom",
+    "engagement": "High"
+  },
+  {
+    "id": "behind-scenes",
+    "name": "Behind the Scenes",
+    "category": "Personal",
+    "description": "Show the human side of your business",
+    "template": "Behind the scenes: [WHAT YOU'RE SHOWING]\n\n[DESCRIPTION OF WHAT'S HAPPENING]\n\n[PERSONAL INSIGHT OR THOUGHT]\n\n[RELATABLE MOMENT OR CHALLENGE]\n\nThis is the reality of [TOPIC] - not always glamorous, but always real.\n\n#[HASHTAG1] #[HASHTAG2]",
+    "example": "Behind the scenes: My morning routine\n\n5:30 AM - Coffee and planning\n6:00 AM - Exercise (even when I don't want to)\n7:00 AM - Team standup\n8:00 AM - Deep work block\n\nSome days I nail it. Other days I'm scrolling Instagram at 6 AM wondering why I set my alarm so early.\n\nThis is the reality of entrepreneurship - not always glamorous, but always real.\n\n#Entrepreneurship #MorningRoutine #Reality",
+    "bestFor": "Building connection, showing authenticity",
+    "engagement": "Medium"
+  },
+  {
+    "id": "mistake-admission",
+    "name": "Mistake Admission",
+    "category": "Vulnerability",
+    "description": "Admit to a mistake and share what you learned",
+    "template": "I need to admit something:\n\n[MISTAKE DESCRIPTION]\n\nI thought [WRONG ASSUMPTION], but I was wrong.\n\nWhat I learned:\n[LESSON 1]\n[LESSON 2]\n[LESSON 3]\n\nNow I [NEW APPROACH]\n\nHave you made a similar mistake?\n\n#[HASHTAG1] #[HASHTAG2]",
+    "example": "I need to admit something:\n\nI used to think that working harder was the same as working smarter.\n\nI thought that if I just put in more hours, I'd get better results, but I was wrong.\n\nWhat I learned:\n• Burnout kills creativity\n• Systems beat willpower\n• Rest is productive\n\nNow I focus on working on the right things, not just more things.\n\nHave you made a similar mistake?\n\n#Productivity #WorkLifeBalance #Learning",
+    "bestFor": "Building trust, showing growth",
+    "engagement": "High"
+  },
+  {
+    "id": "prediction",
+    "name": "Prediction",
+    "category": "Thought Leadership",
+    "description": "Make a prediction about your industry",
+    "template": "Prediction: [BOLD PREDICTION]\n\nHere's why I think this will happen:\n\n[REASON 1]\n\n[REASON 2]\n\n[REASON 3]\n\nI could be wrong, but I'm betting on [YOUR STANCE].\n\nWhat do you think?\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "Prediction: Remote work will become the default, not the exception.\n\nHere's why I think this will happen:\n\n1. Talent is global - companies that don't embrace remote will lose the best people\n2. Technology is making it easier than ever\n3. Gen Z expects flexibility as a baseline, not a perk\n\nI could be wrong, but I'm betting on distributed teams becoming the norm.\n\nWhat do you think?\n\n#RemoteWork #FutureOfWork #Prediction",
+    "bestFor": "Building thought leadership, generating discussion",
+    "engagement": "High"
+  },
+  {
+    "id": "contrarian-view",
+    "name": "Contrarian View",
+    "category": "Opinion",
+    "description": "Challenge conventional wisdom",
+    "template": "Everyone says [CONVENTIONAL WISDOM], but I disagree.\n\nHere's why:\n\n[REASON 1]\n\n[REASON 2]\n\n[REASON 3]\n\nInstead, I believe [YOUR ALTERNATIVE VIEW].\n\nThis might be controversial, but [PERSONAL EXPERIENCE/EXAMPLE].\n\nWhat's your take?\n\n#[HASHTAG1] #[HASHTAG2]",
+    "example": "Everyone says 'follow your passion,' but I disagree.\n\nHere's why:\n\n1. Passion often doesn't pay the bills\n2. Skills matter more than passion\n3. Passion can be developed over time\n\nInstead, I believe in following your strengths and building passion through mastery.\n\nThis might be controversial, but I've seen more people succeed by getting really good at something they're naturally good at than by chasing a passion that doesn't align with market needs.\n\nWhat's your take?\n\n#Career #Passion #Skills",
+    "bestFor": "Generating discussion, standing out",
+    "engagement": "Very High"
+  },
+  {
+    "id": "resource-share",
+    "name": "Resource Share",
+    "category": "Value",
+    "description": "Share a helpful resource or tool",
+    "template": "Sharing a resource that changed my [AREA]:\n\n[RESOURCE NAME/DESCRIPTION]\n\nWhy it's valuable:\n• [BENEFIT 1]\n• [BENEFIT 2]\n• [BENEFIT 3]\n\nHow I use it:\n[USAGE EXAMPLE]\n\n[LINK OR HOW TO ACCESS]\n\nWhat resources have changed your [AREA]?\n\n#[HASHTAG1] #[HASHTAG2]",
+    "example": "Sharing a resource that changed my productivity:\n\nNotion - it's like having a second brain.\n\nWhy it's valuable:\n• Everything in one place\n• Customizable for any workflow\n• Free for personal use\n\nHow I use it:\nI track projects, store ideas, manage my content calendar, and even plan my meals - all in one system.\n\n[Notion.com]\n\nWhat resources have changed your productivity?\n\n#Productivity #Tools #Notion",
+    "bestFor": "Providing value, building authority",
+    "engagement": "Medium"
+  },
+  {
+    "id": "milestone-celebration",
+    "name": "Milestone Celebration",
+    "category": "Personal",
+    "description": "Celebrate an achievement or milestone",
+    "template": "🎉 [MILESTONE ACHIEVED]!\n\n[MILESTONE DESCRIPTION]\n\nThis means [WHAT IT MEANS TO YOU]\n\nNone of this would have been possible without [GRATITUDE/ACKNOWLEDGMENTS].\n\n[PERSONAL REFLECTION]\n\nThank you to everyone who [SUPPORT/HELP].\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "🎉 10,000 LinkedIn followers!\n\nWhen I started posting regularly 18 months ago, I had 500 connections.\n\nThis means I can reach more people with my message about [TOPIC] and help more [TARGET AUDIENCE] achieve their goals.\n\nNone of this would have been possible without the amazing community here who engage with my content and share their own insights.\n\nI'm grateful for every comment, share, and connection.\n\nThank you to everyone who has supported this journey.\n\n#Milestone #Gratitude #Community",
+    "bestFor": "Building community, showing progress",
+    "engagement": "High"
+  },
+  {
+    "id": "trend-analysis",
+    "name": "Trend Analysis",
+    "category": "Thought Leadership",
+    "description": "Analyze a current trend in your industry",
+    "template": "Trend alert: [TREND NAME]\n\nWhat's happening:\n[TREND DESCRIPTION]\n\nWhy it matters:\n[IMPACT/IMPLICATIONS]\n\nWhat this means for [YOUR AUDIENCE]:\n[RELEVANCE/ACTION ITEMS]\n\nMy take: [YOUR OPINION]\n\nAre you seeing this trend too?\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "Trend alert: The rise of AI in content creation\n\nWhat's happening:\nMore companies are using AI tools to generate blog posts, social media content, and even video scripts.\n\nWhy it matters:\nThis could fundamentally change how we think about content creation and what makes content valuable.\n\nWhat this means for content creators:\n• Focus on unique insights and personal experiences\n• Develop skills AI can't replicate\n• Use AI as a tool, not a replacement\n\nMy take: AI will make human creativity more valuable, not less.\n\nAre you seeing this trend too?\n\n#AI #ContentCreation #Trends",
+    "bestFor": "Building thought leadership, staying relevant",
+    "engagement": "Medium"
+  },
+  {
+    "id": "book-recommendation",
+    "name": "Book Recommendation",
+    "category": "Value",
+    "description": "Recommend a book with key takeaways",
+    "template": "Book recommendation: [BOOK TITLE]\n\nWhy I love it:\n[REASON 1]\n[REASON 2]\n[REASON 3]\n\nKey takeaways:\n• [TAKEAWAY 1]\n• [TAKEAWAY 2]\n• [TAKEAWAY 3]\n\nWho should read it:\n[TARGET AUDIENCE]\n\nWhat books have changed your thinking recently?\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "Book recommendation: Atomic Habits by James Clear\n\nWhy I love it:\nIt's practical, not just theoretical\nClear explains the science behind habit formation\nIt's actionable - you can implement the strategies immediately\n\nKey takeaways:\n• Small changes compound over time\n• Focus on systems, not goals\n• Environment shapes behavior more than willpower\n\nWho should read it:\nAnyone looking to build better habits or break bad ones.\n\nWhat books have changed your thinking recently?\n\n#Books #Habits #PersonalDevelopment",
+    "bestFor": "Providing value, building expertise",
+    "engagement": "Medium"
+  },
+  {
+    "id": "poll-question",
+    "name": "Poll Question",
+    "category": "Engagement",
+    "description": "Ask a poll question to generate engagement",
+    "template": "Quick poll:\n\n[QUESTION]\n\nOption A: [OPTION 1]\nOption B: [OPTION 2]\nOption C: [OPTION 3]\nOption D: [OPTION 4]\n\nI'm curious about your thoughts because [CONTEXT].\n\nDrop your answer below! 👇\n\n#[HASHTAG1] #[HASHTAG2]",
+    "example": "Quick poll:\n\nWhat's your biggest challenge with remote work?\n\nOption A: Communication\nOption B: Staying motivated\nOption C: Work-life balance\nOption D: Building relationships\n\nI'm curious about your thoughts because I'm working on a guide to help remote workers overcome common challenges.\n\nDrop your answer below! 👇\n\n#RemoteWork #Poll #Challenges",
+    "bestFor": "Generating engagement, gathering insights",
+    "engagement": "Very High"
+  },
+  {
+    "id": "quote-reflection",
+    "name": "Quote Reflection",
+    "category": "Inspiration",
+    "description": "Share a quote and your thoughts on it",
+    "template": "\"[QUOTE]\"\n\n- [AUTHOR]\n\nThis hit me hard because [PERSONAL CONNECTION].\n\n[REFLECTION/ANALYSIS]\n\n[PERSONAL EXAMPLE OR STORY]\n\nWhat quote has changed your perspective recently?\n\n#[HASHTAG1] #[HASHTAG2]",
+    "example": "\"The best time to plant a tree was 20 years ago. The second best time is now.\"\n\n- Chinese Proverb\n\nThis hit me hard because I spent years waiting for the 'perfect' time to start my business.\n\nI was waiting for more experience, more money, more confidence. But perfect timing doesn't exist.\n\nI finally started 3 years ago, and while it's been challenging, I wish I had started sooner.\n\nWhat quote has changed your perspective recently?\n\n#Motivation #Entrepreneurship #Wisdom",
+    "bestFor": "Inspiring others, sharing wisdom",
+    "engagement": "Medium"
+  },
+  {
+    "id": "tool-comparison",
+    "name": "Tool Comparison",
+    "category": "Value",
+    "description": "Compare different tools or approaches",
+    "template": "Tool comparison: [TOOL 1] vs [TOOL 2]\n\nI've used both for [TIME PERIOD]. Here's my take:\n\n[TOOL 1]:\n✅ [PROS]\n❌ [CONS]\n\n[TOOL 2]:\n✅ [PROS]\n❌ [CONS]\n\nMy recommendation: [RECOMMENDATION] for [REASON].\n\nWhat's your experience with these tools?\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "Tool comparison: Slack vs Microsoft Teams\n\nI've used both for 2+ years. Here's my take:\n\nSlack:\n✅ Better integrations\n✅ More intuitive interface\n❌ Can get expensive\n\nMicrosoft Teams:\n✅ Better for video calls\n✅ Integrated with Office 365\n❌ Clunky interface\n\nMy recommendation: Slack for startups, Teams for enterprise.\n\nWhat's your experience with these tools?\n\n#Tools #Communication #Comparison",
+    "bestFor": "Providing value, building expertise",
+    "engagement": "Medium"
+  },
+  {
+    "id": "seasonal-post",
+    "name": "Seasonal Post",
+    "category": "Personal",
+    "description": "Connect with your audience around seasons or events",
+    "template": "[SEASON/EVENT] always makes me think about [TOPIC].\n\n[PERSONAL REFLECTION]\n\n[RELEVANT INSIGHT OR LESSON]\n\n[SEASONAL WISH OR MESSAGE]\n\nHow does [SEASON/EVENT] affect your [RELEVANT AREA]?\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "New Year always makes me think about goal setting.\n\nI used to make long lists of resolutions that I'd abandon by February.\n\nNow I focus on 1-2 key areas and build systems to support them, not just willpower.\n\nWishing you a year of meaningful progress, not just busy activity.\n\nHow does New Year affect your goal setting?\n\n#NewYear #Goals #Planning",
+    "bestFor": "Building connection, staying relevant",
+    "engagement": "Medium"
+  },
+  {
+    "id": "myth-busting",
+    "name": "Myth Busting",
+    "category": "Educational",
+    "description": "Debunk a common misconception",
+    "template": "Myth: [COMMON BELIEF]\n\nReality: [ACTUAL TRUTH]\n\nWhy this myth persists:\n[REASON 1]\n[REASON 2]\n\nWhat actually works:\n[TRUTH 1]\n[TRUTH 2]\n[TRUTH 3]\n\nI learned this the hard way when [PERSONAL EXAMPLE].\n\nWhat myths have you discovered in [YOUR FIELD]?\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "Myth: You need to work 80+ hours to be successful.\n\nReality: Working smarter beats working harder every time.\n\nWhy this myth persists:\n• Hustle culture glorifies busyness\n• Success stories often focus on the grind\n• It's easier to measure hours than impact\n\nWhat actually works:\n• Focus on high-impact activities\n• Build systems that work without you\n• Rest is productive\n\nI learned this the hard way when I burned out after 2 years of 80-hour weeks.\n\nWhat myths have you discovered in entrepreneurship?\n\n#Productivity #MythBusting #WorkLifeBalance",
+    "bestFor": "Educating audience, standing out",
+    "engagement": "High"
+  },
+  {
+    "id": "transformation-story",
+    "name": "Transformation Story",
+    "category": "Storytelling",
+    "description": "Share a before/after transformation",
+    "template": "Transformation Tuesday: [WHAT CHANGED]\n\nBefore:\n[BEFORE STATE]\n\nAfter:\n[AFTER STATE]\n\nWhat changed:\n[KEY CHANGES]\n\nThe turning point:\n[MOMENT OF CHANGE]\n\nIf you're struggling with [RELATED CHALLENGE], know that change is possible.\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "Transformation Tuesday: From introvert to confident speaker\n\nBefore:\nI couldn't speak up in meetings. I'd rehearse what to say but never say it. I felt invisible.\n\nAfter:\nI now speak at conferences and lead team meetings with confidence. People ask for my opinion.\n\nWhat changed:\n• Started with small steps (asking one question per meeting)\n• Practiced in low-stakes situations\n• Focused on adding value, not being perfect\n\nThe turning point:\nWhen I realized that my perspective was valuable and that people wanted to hear it.\n\nIf you're struggling with confidence, know that change is possible.\n\n#Transformation #Confidence #Growth",
+    "bestFor": "Inspiring others, showing growth",
+    "engagement": "High"
+  },
+  {
+    "id": "industry-insider",
+    "name": "Industry Insider",
+    "category": "Thought Leadership",
+    "description": "Share insider knowledge from your industry",
+    "template": "Industry insider tip: [INSIDER KNOWLEDGE]\n\nMost people don't know this, but [SECRET/INSIGHT].\n\nWhy this matters:\n[IMPORTANCE/IMPACT]\n\nHow to use this:\n[ACTIONABLE ADVICE]\n\nI learned this after [EXPERIENCE/STORY].\n\nWhat insider tips do you have for [YOUR INDUSTRY]?\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "Industry insider tip: Most job postings are written by HR, not the hiring manager.\n\nMost people don't know this, but the person who wrote the job description might not even be on the interview panel.\n\nWhy this matters:\nThe job posting might not reflect what the role actually involves or what the team really needs.\n\nHow to use this:\n• Research the company and role beyond the posting\n• Ask specific questions about day-to-day responsibilities\n• Connect with people in similar roles at the company\n\nI learned this after being hired for a 'marketing coordinator' role that was actually 80% sales.\n\nWhat insider tips do you have for job searching?\n\n#JobSearch #Career #InsiderTips",
+    "bestFor": "Building authority, providing value",
+    "engagement": "High"
+  },
+  {
+    "id": "failure-story",
+    "name": "Failure Story",
+    "category": "Vulnerability",
+    "description": "Share a failure and what you learned",
+    "template": "I failed at [WHAT YOU FAILED AT].\n\nHere's what happened:\n[FAILURE STORY]\n\nWhat went wrong:\n[MISTAKES MADE]\n\nWhat I learned:\n[LESSONS LEARNED]\n\nHow I'm different now:\n[CHANGES MADE]\n\nFailure isn't the opposite of success - it's part of it.\n\nWhat failure taught you the most?\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "I failed at my first startup.\n\nHere's what happened:\nI spent 18 months building a product nobody wanted. I was so focused on the technology that I forgot to validate the market.\n\nWhat went wrong:\n• No market research\n• Built in isolation\n• Ignored customer feedback\n• Ran out of money\n\nWhat I learned:\n• Talk to customers before building\n• Start small and iterate\n• Cash flow is king\n• Failure is data, not defeat\n\nHow I'm different now:\nI validate every idea before writing a single line of code.\n\nFailure isn't the opposite of success - it's part of it.\n\nWhat failure taught you the most?\n\n#Entrepreneurship #Failure #Learning",
+    "bestFor": "Building relatability, showing growth",
+    "engagement": "High"
+  },
+  {
+    "id": "quick-tip",
+    "name": "Quick Tip",
+    "category": "Value",
+    "description": "Share a quick, actionable tip",
+    "template": "Quick tip: [TIP TITLE]\n\n[EXPLANATION OF TIP]\n\nWhy it works:\n[REASON]\n\nHow to implement:\n[STEPS]\n\nTry this today and let me know how it goes!\n\n#[HASHTAG1] #[HASHTAG2]",
+    "example": "Quick tip: The 2-minute rule\n\nIf something takes less than 2 minutes, do it now instead of adding it to your to-do list.\n\nWhy it works:\nIt prevents small tasks from accumulating and becoming overwhelming.\n\nHow to implement:\n• Reply to that quick email now\n• Put that item away immediately\n• Make that phone call right now\n\nTry this today and let me know how it goes!\n\n#Productivity #Tips #Efficiency",
+    "bestFor": "Providing quick value, building expertise",
+    "engagement": "Medium"
+  },
+  {
+    "id": "behind-success",
+    "name": "Behind Success",
+    "category": "Storytelling",
+    "description": "Show what success really looks like",
+    "template": "What success really looks like:\n\n[SUCCESS DESCRIPTION]\n\nBut here's what you don't see:\n[REALITY/HIDDEN COSTS]\n\n[PERSONAL EXAMPLE]\n\nSuccess isn't always glamorous, but it's worth it when [WHY IT MATTERS].\n\nWhat does success look like to you?\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "What success really looks like:\n\n6-figure business, speaking at conferences, featured in major publications.\n\nBut here's what you don't see:\n• 3 AM wake-ups to work before the kids get up\n• Missing family dinners to meet deadlines\n• Constant pressure to maintain momentum\n• Imposter syndrome that never fully goes away\n\nI love what I do, but it's not always the highlight reel you see on social media.\n\nSuccess isn't always glamorous, but it's worth it when I see the impact on people's lives.\n\nWhat does success look like to you?\n\n#Success #Reality #Entrepreneurship",
+    "bestFor": "Showing authenticity, building connection",
+    "engagement": "High"
+  },
+  {
+    "id": "trending-topic",
+    "name": "Trending Topic",
+    "category": "Current Events",
+    "description": "Comment on a trending topic in your industry",
+    "template": "Hot take on [TRENDING TOPIC]:\n\n[YOUR OPINION]\n\nHere's why:\n[REASON 1]\n[REASON 2]\n[REASON 3]\n\nWhat this means for [YOUR AUDIENCE]:\n[IMPLICATIONS]\n\nI know this is controversial, but [PERSONAL STANCE].\n\nWhat's your take on [TRENDING TOPIC]?\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "Hot take on the 4-day work week:\n\nIt's not about working less - it's about working better.\n\nHere's why:\n• Forces focus on high-impact activities\n• Reduces burnout and increases retention\n• Technology makes it possible\n• Results matter more than hours\n\nWhat this means for employees:\nYou'll need to be more intentional about how you spend your time.\n\nI know this is controversial, but I think it's the future of work.\n\nWhat's your take on the 4-day work week?\n\n#WorkLifeBalance #FutureOfWork #Productivity",
+    "bestFor": "Staying relevant, generating discussion",
+    "engagement": "High"
+  },
+  {
+    "id": "gratitude-post",
+    "name": "Gratitude Post",
+    "category": "Personal",
+    "description": "Express gratitude and appreciation",
+    "template": "Grateful for [WHAT YOU'RE GRATEFUL FOR].\n\n[SPECIFIC EXAMPLES]\n\n[PERSONAL REFLECTION]\n\nThank you to [SPECIFIC PEOPLE/THINGS].\n\n[IMPACT/MEANING]\n\nWhat are you grateful for today?\n\n#[HASHTAG1] #[HASHTAG2] #[HASHTAG3]",
+    "example": "Grateful for the LinkedIn community.\n\nYour comments, shares, and messages have made this platform more than just a professional network - it's become a source of inspiration and connection.\n\nI've learned from your experiences, been challenged by your perspectives, and found support during difficult times.\n\nThank you to everyone who takes the time to engage authentically and share their insights.\n\nThis community has changed how I think about professional relationships.\n\nWhat are you grateful for today?\n\n#Gratitude #Community #LinkedIn",
+    "bestFor": "Building community, showing appreciation",
+    "engagement": "Medium"
+  }
+]
