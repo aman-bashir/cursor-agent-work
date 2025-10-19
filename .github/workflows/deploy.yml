@@ -20,31 +20,13 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
-            echo "🔧 Setting up VPS with required software..."
-            
-            # Update system
-            sudo apt update -y
-            
-            # Install Node.js if not present
-            if ! command -v node &> /dev/null; then
-              echo "Installing Node.js..."
-              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-              sudo apt-get install -y nodejs
-            fi
-            
-            # Install PM2 if not present
-            if ! command -v pm2 &> /dev/null; then
-              echo "Installing PM2..."
-              sudo npm install -g pm2
-            fi
-            
-            # Install Git if not present
-            if ! command -v git &> /dev/null; then
-              echo "Installing Git..."
-              sudo apt install git -y
-            fi
-            
-            echo "✅ VPS setup complete!"
+            echo "🔧 Testing VPS connection..."
+            echo "Current user: $(whoami)"
+            echo "Current directory: $(pwd)"
+            echo "Node.js version: $(node --version 2>/dev/null || echo 'Not installed')"
+            echo "PM2 version: $(pm2 --version 2>/dev/null || echo 'Not installed')"
+            echo "Git version: $(git --version 2>/dev/null || echo 'Not installed')"
+            echo "✅ VPS connection test complete!"
 
   # Detect which tools have changed
   detect-changes:
