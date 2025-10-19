@@ -1,108 +1,134 @@
 import { encode } from 'gpt-tokenizer';
-import { encoding_for_model } from 'tiktoken';
 
 export interface TokenCount {
-    input: number;
-    output: number;
-    total: number;
+  inputTokens: number;
+  outputTokens: number;
+  totalTokens: number;
+  characters: number;
+  words: number;
+  lines: number;
 }
 
-export interface ModelInfo {
-    name: string;
-    provider: string;
-    input: number;
-    output: number;
-    context: number;
-    description: string;
+export interface TokenizerResult {
+  tokens: number;
+  characters: number;
+  words: number;
+  lines: number;
 }
 
-export interface ModelComparison {
-    model: string;
-    modelInfo: ModelInfo;
-    cost: number;
-    isCheapest: boolean;
-}
-
-// Count tokens for different models
-export function countTokens(text: string, model: string): number {
-    try {
-        // For OpenAI models, use tiktoken
-        if (model.startsWith('gpt-')) {
-            const encoding = encoding_for_model(model as any);
-            return encoding.encode(text).length;
-        }
-
-        // For Claude models, use gpt-tokenizer (closest approximation)
-        if (model.startsWith('claude-')) {
-            return encode(text).length;
-        }
-
-        // For Gemini models, use gpt-tokenizer as approximation
-        if (model.startsWith('gemini-')) {
-            return encode(text).length;
-        }
-
-        // Default fallback
-        return encode(text).length;
-    } catch (error) {
-        console.error('Error counting tokens:', error);
-        // Fallback to simple approximation: ~4 characters per token
-        return Math.ceil(text.length / 4);
-    }
-}
-
-// Calculate cost based on token count and model
-export function calculateCost(
-    inputTokens: number,
-    outputTokens: number,
-    modelInfo: ModelInfo
-): number {
-    const inputCost = (inputTokens / 1000) * modelInfo.input;
-    const outputCost = (outputTokens / 1000) * modelInfo.output;
-    return inputCost + outputCost;
-}
-
-// Estimate monthly cost
-export function estimateMonthlyCost(
-    tokensPerRequest: number,
-    requestsPerDay: number,
-    modelInfo: ModelInfo
-): number {
-    const dailyCost = calculateCost(tokensPerRequest, 0, modelInfo) * requestsPerDay;
-    return dailyCost * 30; // 30 days
-}
-
-// Get character and word counts
-export function getTextStats(text: string) {
+// GPT tokenizer (works for GPT-3.5, GPT-4, etc.)
+export function countGPTTokens(text: string): TokenizerResult {
+  try {
+    const tokens = encode(text).length;
     const characters = text.length;
     const words = text.trim().split(/\s+/).filter(word => word.length > 0).length;
     const lines = text.split('\n').length;
 
     return {
-        characters,
-        words,
-        lines
+      tokens,
+      characters,
+      words,
+      lines
     };
+  } catch (error) {
+    console.error('Error counting GPT tokens:', error);
+    // Fallback to character-based estimation
+    return {
+      tokens: Math.ceil(text.length / 4), // Rough estimate: 4 chars per token
+      characters: text.length,
+      words: text.trim().split(/\s+/).filter(word => word.length > 0).length,
+      lines: text.split('\n').length
+    };
+  }
 }
 
-// Format cost for display
-export function formatCost(cost: number): string {
-    if (cost < 0.001) {
-        return `$${(cost * 1000).toFixed(3)} (per 1K)`;
-    } else if (cost < 1) {
-        return `$${cost.toFixed(4)}`;
-    } else {
-        return `$${cost.toFixed(2)}`;
-    }
+// Claude tokenizer (approximation)
+export function countClaudeTokens(text: string): TokenizerResult {
+  // Claude uses a different tokenizer, but we'll approximate
+  // Claude tokens are roughly 1.2x GPT tokens
+  const gptResult = countGPTTokens(text);
+  return {
+    ...gptResult,
+    tokens: Math.ceil(gptResult.tokens * 1.2)
+  };
+}
+
+// Gemini tokenizer (approximation)
+export function countGeminiTokens(text: string): TokenizerResult {
+  // Gemini uses SentencePiece, roughly similar to GPT
+  const gptResult = countGPTTokens(text);
+  return {
+    ...gptResult,
+    tokens: Math.ceil(gptResult.tokens * 0.95) // Slightly more efficient
+  };
+}
+
+export function countTokensForModel(text: string, modelName: string): TokenizerResult {
+  const lowerModelName = modelName.toLowerCase();
+  
+  if (lowerModelName.includes('gpt')) {
+    return countGPTTokens(text);
+  } else if (lowerModelName.includes('claude')) {
+    return countClaudeTokens(text);
+  } else if (lowerModelName.includes('gemini')) {
+    return countGeminiTokens(text);
+  } else {
+    // Default to GPT tokenizer
+    return countGPTTokens(text);
+  }
+}
+
+export function calculateTokenCount(
+  inputText: string,
+  outputText: string = '',
+  modelName: string = 'GPT-4'
+): TokenCount {
+  const inputResult = countTokensForModel(inputText, modelName);
+  const outputResult = countTokensForModel(outputText, modelName);
+  
+  return {
+    inputTokens: inputResult.tokens,
+    outputTokens: outputResult.tokens,
+    totalTokens: inputResult.tokens + outputResult.tokens,
+    characters: inputResult.characters + outputResult.characters,
+    words: inputResult.words + outputResult.words,
+    lines: inputResult.lines + outputResult.lines
+  };
+}
+
+// Utility function to estimate tokens from characters
+export function estimateTokensFromCharacters(characters: number, modelName: string = 'GPT-4'): number {
+  const lowerModelName = modelName.toLowerCase();
+  
+  if (lowerModelName.includes('gpt')) {
+    return Math.ceil(characters / 4); // ~4 chars per token
+  } else if (lowerModelName.includes('claude')) {
+    return Math.ceil(characters / 3.3); // ~3.3 chars per token
+  } else if (lowerModelName.includes('gemini')) {
+    return Math.ceil(characters / 4.2); // ~4.2 chars per token
+  } else {
+    return Math.ceil(characters / 4); // Default
+  }
 }
 
 // Format large numbers
 export function formatNumber(num: number): string {
-    if (num >= 1000000) {
-        return `${(num / 1000000).toFixed(1)}M`;
-    } else if (num >= 1000) {
-        return `${(num / 1000).toFixed(1)}K`;
-    } else {
-        return num.toString();
-    }
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(1) + 'M';
+  } else if (num >= 1000) {
+    return (num / 1000).toFixed(1) + 'K';
+  } else {
+    return num.toString();
+  }
+}
+
+// Format currency
+export function formatCurrency(amount: number): string {
+  if (amount < 0.001) {
+    return `$${(amount * 1000).toFixed(3)}m`; // Show in millicents
+  } else if (amount < 1) {
+    return `$${(amount * 100).toFixed(2)}¢`; // Show in cents
+  } else {
+    return `$${amount.toFixed(4)}`;
+  }
 }
