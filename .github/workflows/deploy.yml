@@ -8,8 +8,47 @@ on:
       - '.github/workflows/deploy.yml'
 
 jobs:
+  # Setup VPS with required software
+  setup-vps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup VPS
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            echo "🔧 Setting up VPS with required software..."
+            
+            # Update system
+            sudo apt update -y
+            
+            # Install Node.js if not present
+            if ! command -v node &> /dev/null; then
+              echo "Installing Node.js..."
+              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+              sudo apt-get install -y nodejs
+            fi
+            
+            # Install PM2 if not present
+            if ! command -v pm2 &> /dev/null; then
+              echo "Installing PM2..."
+              sudo npm install -g pm2
+            fi
+            
+            # Install Git if not present
+            if ! command -v git &> /dev/null; then
+              echo "Installing Git..."
+              sudo apt install git -y
+            fi
+            
+            echo "✅ VPS setup complete!"
+
   # Detect which tools have changed
   detect-changes:
+    needs: setup-vps
     runs-on: ubuntu-latest
     outputs:
       tool01: ${{ steps.filter.outputs.tool01 }}
@@ -90,10 +129,25 @@ jobs:
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
             echo "🚀 Deploying Tool #2: Token Counter"
-            cd /var/www/tool-02-token-counter || exit 1
+            
+            # Create directory if it doesn't exist
+            mkdir -p /var/www/cursor-agent-work
+            cd /var/www/cursor-agent-work
+            
+            # Clone repository if not exists
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/aman-bashir/cursor-agent-work.git .
+            fi
+            
+            # Pull latest changes
             git pull origin main
+            
+            # Install dependencies for tool-02
+            cd tool-02-token-counter
             npm ci --production
             npm run build
+            
+            # Start with PM2
             pm2 restart tool-02 || pm2 start npm --name "tool-02" -- start
             echo "✅ Tool #2 deployed successfully!"
 
@@ -112,10 +166,25 @@ jobs:
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
             echo "🚀 Deploying Tool #3: JSON Converter"
-            cd /var/www/tool-03-json-converter || exit 1
+            
+            # Create directory if it doesn't exist
+            mkdir -p /var/www/cursor-agent-work
+            cd /var/www/cursor-agent-work
+            
+            # Clone repository if not exists
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/aman-bashir/cursor-agent-work.git .
+            fi
+            
+            # Pull latest changes
             git pull origin main
+            
+            # Install dependencies for tool-03
+            cd tool-03-json-converter
             npm ci --production
             npm run build
+            
+            # Start with PM2
             pm2 restart tool-03 || pm2 start npm --name "tool-03" -- start
             echo "✅ Tool #3 deployed successfully!"
 
@@ -134,10 +203,25 @@ jobs:
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
             echo "🚀 Deploying Tool #4: Cron Generator"
-            cd /var/www/tool-04-cron-generator || exit 1
+            
+            # Create directory if it doesn't exist
+            mkdir -p /var/www/cursor-agent-work
+            cd /var/www/cursor-agent-work
+            
+            # Clone repository if not exists
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/aman-bashir/cursor-agent-work.git .
+            fi
+            
+            # Pull latest changes
             git pull origin main
+            
+            # Install dependencies for tool-04
+            cd tool-04-cron-generator
             npm ci --production
             npm run build
+            
+            # Start with PM2
             pm2 restart tool-04 || pm2 start npm --name "tool-04" -- start
             echo "✅ Tool #4 deployed successfully!"
 
@@ -156,10 +240,25 @@ jobs:
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
             echo "🚀 Deploying Tool #5: AI Prompt Library"
-            cd /var/www/tool-05-ai-prompt-library || exit 1
+            
+            # Create directory if it doesn't exist
+            mkdir -p /var/www/cursor-agent-work
+            cd /var/www/cursor-agent-work
+            
+            # Clone repository if not exists
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/aman-bashir/cursor-agent-work.git .
+            fi
+            
+            # Pull latest changes
             git pull origin main
+            
+            # Install dependencies for tool-05
+            cd tool-05-ai-prompt-library
             npm ci --production
             npm run build
+            
+            # Start with PM2
             pm2 restart tool-05 || pm2 start npm --name "tool-05" -- start
             echo "✅ Tool #5 deployed successfully!"
 
@@ -178,10 +277,25 @@ jobs:
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
             echo "🚀 Deploying Tool #6: Time Zone Scheduler"
-            cd /var/www/tool-06-timezone-scheduler || exit 1
+            
+            # Create directory if it doesn't exist
+            mkdir -p /var/www/cursor-agent-work
+            cd /var/www/cursor-agent-work
+            
+            # Clone repository if not exists
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/aman-bashir/cursor-agent-work.git .
+            fi
+            
+            # Pull latest changes
             git pull origin main
+            
+            # Install dependencies for tool-06
+            cd tool-06-timezone-scheduler
             npm ci --production
             npm run build
+            
+            # Start with PM2
             pm2 restart tool-06 || pm2 start npm --name "tool-06" -- start
             echo "✅ Tool #6 deployed successfully!"
 
@@ -200,10 +314,25 @@ jobs:
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
             echo "🚀 Deploying Tool #7: LinkedIn Formatter"
-            cd /var/www/tool-07-linkedin-formatter || exit 1
+            
+            # Create directory if it doesn't exist
+            mkdir -p /var/www/cursor-agent-work
+            cd /var/www/cursor-agent-work
+            
+            # Clone repository if not exists
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/aman-bashir/cursor-agent-work.git .
+            fi
+            
+            # Pull latest changes
             git pull origin main
+            
+            # Install dependencies for tool-07
+            cd tool-07-linkedin-formatter
             npm ci --production
             npm run build
+            
+            # Start with PM2
             pm2 restart tool-07 || pm2 start npm --name "tool-07" -- start
             echo "✅ Tool #7 deployed successfully!"
 
@@ -222,10 +351,25 @@ jobs:
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
             echo "🚀 Deploying Tool #8: Color Palette Generator"
-            cd /var/www/tool-08-color-palette || exit 1
+            
+            # Create directory if it doesn't exist
+            mkdir -p /var/www/cursor-agent-work
+            cd /var/www/cursor-agent-work
+            
+            # Clone repository if not exists
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/aman-bashir/cursor-agent-work.git .
+            fi
+            
+            # Pull latest changes
             git pull origin main
+            
+            # Install dependencies for tool-08
+            cd tool-08-color-palette
             npm ci --production
             npm run build
+            
+            # Start with PM2
             pm2 restart tool-08 || pm2 start npm --name "tool-08" -- start
             echo "✅ Tool #8 deployed successfully!"
 
@@ -244,10 +388,25 @@ jobs:
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
             echo "🚀 Deploying Tool #9: Thumbnail Tester"
-            cd /var/www/tool-09-thumbnail-tester || exit 1
+            
+            # Create directory if it doesn't exist
+            mkdir -p /var/www/cursor-agent-work
+            cd /var/www/cursor-agent-work
+            
+            # Clone repository if not exists
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/aman-bashir/cursor-agent-work.git .
+            fi
+            
+            # Pull latest changes
             git pull origin main
+            
+            # Install dependencies for tool-09
+            cd tool-09-thumbnail-tester
             npm ci --production
             npm run build
+            
+            # Start with PM2
             pm2 restart tool-09 || pm2 start npm --name "tool-09" -- start
             echo "✅ Tool #9 deployed successfully!"
 
@@ -266,10 +425,25 @@ jobs:
           port: ${{ secrets.VPS_PORT || 22 }}
           script: |
             echo "🚀 Deploying Tool #10: QR Code Analytics"
-            cd /var/www/tool-10-qr-code-analytics || exit 1
+            
+            # Create directory if it doesn't exist
+            mkdir -p /var/www/cursor-agent-work
+            cd /var/www/cursor-agent-work
+            
+            # Clone repository if not exists
+            if [ ! -d ".git" ]; then
+              git clone https://github.com/aman-bashir/cursor-agent-work.git .
+            fi
+            
+            # Pull latest changes
             git pull origin main
+            
+            # Install dependencies for tool-10
+            cd tool-10-qr-code-analytics
             npm ci --production
             npm run build
+            
+            # Start with PM2
             pm2 restart tool-10 || pm2 start npm --name "tool-10" -- start
             echo "✅ Tool #10 deployed successfully!"
 
