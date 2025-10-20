@@ -31,18 +31,18 @@ import {
   Link,
   Type
 } from 'lucide-react';
-import { QRData, QRCustomization, GeneratedQRCode } from './lib/types';
+import { QRData, QRCustomization, GeneratedQRCode } from '../lib/types';
 import {
   generateQRCodeImage,
   createGeneratedQRCode,
   getDefaultCustomization,
   validateQRData
-} from './lib/qrGenerator';
-import { cn } from './lib/utils';
-import QRTypeSelector from './components/QRTypeSelector';
-import QRCustomizer from './components/QRCustomizer';
-import QRPreview from './components/QRPreview';
-import TemplateSelector from './components/TemplateSelector';
+} from '../lib/qrGenerator';
+import { cn } from '../lib/utils';
+import QRTypeSelector from '../components/QRTypeSelector';
+import QRCustomizer from '../components/QRCustomizer';
+import QRPreview from '../components/QRPreview';
+import TemplateSelector from '../components/TemplateSelector';
 
 type TabType = 'generate' | 'customize' | 'templates';
 

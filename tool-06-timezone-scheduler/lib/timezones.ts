@@ -73,7 +73,7 @@ export function searchTimezones(query: string): TimezoneInfo[] {
 }
 
 export function getTimezoneByName(name: string): TimezoneInfo | undefined {
-    return getAllTimezones().find(tz => tz.name === name);
+    return getAllTimezones().find(tz => tz.name === name || tz.timezone === name);
 }
 
 export function getCurrentTimeInTimezone(timezone: string): dayjs.Dayjs {

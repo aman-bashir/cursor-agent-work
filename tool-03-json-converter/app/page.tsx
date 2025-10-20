@@ -1,516 +1,364 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Copy, Download, Upload, FileText, AlertCircle, CheckCircle, Settings, Eye } from 'lucide-react';
-import { jsonToCsv, CsvOptions } from '../lib/converters/jsonToCsv';
-import { jsonToXml, XmlOptions } from '../lib/converters/jsonToXml';
-import { jsonToYaml, YamlOptions } from '../lib/converters/jsonToYaml';
-import { jsonToSql, SqlOptions } from '../lib/converters/jsonToSql';
-import { csvToJson, xmlToJson, yamlToJson } from '../lib/converters/reverseConverters';
-import { validateJson, beautifyJson, minifyJson, getJsonStats, formatFileSize } from '../lib/validators';
-
-type Format = 'json' | 'csv' | 'xml' | 'yaml' | 'sql';
-type Mode = 'convert' | 'reverse';
+import React, { useState, useEffect } from 'react';
+import { CodeEditor } from '../components/CodeEditor';
+import { FormatSelector, FORMAT_OPTIONS } from '../components/FormatSelector';
+import { ConversionOptions } from '../components/ConversionOptions';
+import { convertData, ConversionOptions as ConversionOptionsType } from '../lib/converters';
+import { validateJson, validateCsv, validateXml, validateYaml, detectFormat } from '../lib/validators';
+import { ArrowRight, RefreshCw, FileText, AlertCircle, CheckCircle, Copy, Download } from 'lucide-react';
 
 export default function JsonConverterPage() {
-  const [inputText, setInputText] = useState('');
-  const [outputText, setOutputText] = useState('');
-  const [inputFormat, setInputFormat] = useState<Format>('json');
-  const [outputFormat, setOutputFormat] = useState<Format>('csv');
-  const [mode, setMode] = useState<Mode>('convert');
-  const [validation, setValidation] = useState<{ valid: boolean; error?: string; line?: number }>({ valid: true });
-  const [copied, setCopied] = useState(false);
-  const [showOptions, setShowOptions] = useState(false);
-
-  // Options for different formats
-  const [csvOptions, setCsvOptions] = useState<CsvOptions>({ flatten: true, delimiter: ',', headers: true });
-  const [xmlOptions, setXmlOptions] = useState<XmlOptions>({ rootElement: 'root', declaration: true, indent: 2 });
-  const [yamlOptions, setYamlOptions] = useState<YamlOptions>({ indent: 2, lineWidth: 80, noRefs: true });
-  const [sqlOptions, setSqlOptions] = useState<SqlOptions>({ tableName: 'data', mode: 'BOTH' });
+  const [inputData, setInputData] = useState('');
+  const [outputData, setOutputData] = useState('');
+  const [fromFormat, setFromFormat] = useState('json');
+  const [toFormat, setToFormat] = useState('csv');
+  const [isConverting, setIsConverting] = useState(false);
+  const [conversionError, setConversionError] = useState('');
+  const [inputValidation, setInputValidation] = useState<{ isValid: boolean; error?: string }>({ isValid: true });
+  const [conversionOptions, setConversionOptions] = useState<ConversionOptionsType>({
+    delimiter: ',',
+    includeHeaders: true,
+    flatten: false,
+    tableName: 'data_table',
+    indent: 2
+  });
 
   // Example data
   const exampleData = {
-    users: [
-      { id: 1, name: 'John Doe', email: 'john@example.com', profile: { age: 30, city: 'New York' } },
-      { id: 2, name: 'Jane Smith', email: 'jane@example.com', profile: { age: 25, city: 'Los Angeles' } }
-    ],
-    total: 2,
-    active: true
+    json: JSON.stringify([
+      { id: 1, name: 'John Doe', email: 'john@example.com', age: 30, city: 'New York' },
+      { id: 2, name: 'Jane Smith', email: 'jane@example.com', age: 25, city: 'Los Angeles' },
+      { id: 3, name: 'Bob Johnson', email: 'bob@example.com', age: 35, city: 'Chicago' }
+    ], null, 2),
+    csv: 'id,name,email,age,city\n1,John Doe,john@example.com,30,New York\n2,Jane Smith,jane@example.com,25,Los Angeles\n3,Bob Johnson,bob@example.com,35,Chicago',
+    xml: `<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <item>
+    <id>1</id>
+    <name>John Doe</name>
+    <email>john@example.com</email>
+    <age>30</age>
+    <city>New York</city>
+  </item>
+  <item>
+    <id>2</id>
+    <name>Jane Smith</name>
+    <email>jane@example.com</email>
+    <age>25</age>
+    <city>Los Angeles</city>
+  </item>
+</root>`,
+    yaml: `- id: 1
+  name: John Doe
+  email: john@example.com
+  age: 30
+  city: New York
+- id: 2
+  name: Jane Smith
+  email: jane@example.com
+  age: 25
+  city: Los Angeles`,
+    sql: `CREATE TABLE users (
+  id INT PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100),
+  age INT,
+  city VARCHAR(100)
+);
+
+INSERT INTO users (id, name, email, age, city) VALUES (1, 'John Doe', 'john@example.com', 30, 'New York');
+INSERT INTO users (id, name, email, age, city) VALUES (2, 'Jane Smith', 'jane@example.com', 25, 'Los Angeles');`
   };
 
-  // Validate input when it changes
+  // Validate input data
   useEffect(() => {
-    if (inputText.trim()) {
-      if (mode === 'convert' && inputFormat === 'json') {
-        setValidation(validateJson(inputText));
-      } else if (mode === 'reverse') {
-        // For reverse conversion, validate the input format
-        try {
-          switch (inputFormat) {
-            case 'json':
-              JSON.parse(inputText);
-              break;
-            case 'csv':
-              csvToJson(inputText);
-              break;
-            case 'xml':
-              xmlToJson(inputText);
-              break;
-            case 'yaml':
-              yamlToJson(inputText);
-              break;
-          }
-          setValidation({ valid: true });
-        } catch (error) {
-          setValidation({
-            valid: false,
-            error: error instanceof Error ? error.message : 'Invalid format'
-          });
-        }
-      }
-    } else {
-      setValidation({ valid: true });
+    if (!inputData.trim()) {
+      setInputValidation({ isValid: true });
+      return;
     }
-  }, [inputText, inputFormat, mode]);
 
-  // Convert when input or options change
-  useEffect(() => {
-    if (inputText.trim() && validation.valid) {
-      try {
-        convertData();
-      } catch (error) {
-        setOutputText(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
-      }
-    } else {
-      setOutputText('');
+    let validation;
+    switch (fromFormat) {
+      case 'json':
+        validation = validateJson(inputData);
+        break;
+      case 'csv':
+        validation = validateCsv(inputData);
+        break;
+      case 'xml':
+        validation = validateXml(inputData);
+        break;
+      case 'yaml':
+        validation = validateYaml(inputData);
+        break;
+      default:
+        validation = { isValid: true };
     }
-  }, [inputText, inputFormat, outputFormat, mode, csvOptions, xmlOptions, yamlOptions, sqlOptions, validation.valid]);
 
-  const convertData = () => {
-    if (mode === 'convert') {
-      // Convert from JSON to other formats
-      const jsonData = JSON.parse(inputText);
+    setInputValidation(validation);
+  }, [inputData, fromFormat]);
 
-      switch (outputFormat) {
-        case 'csv':
-          setOutputText(jsonToCsv(jsonData, csvOptions));
-          break;
-        case 'xml':
-          setOutputText(jsonToXml(jsonData, xmlOptions));
-          break;
-        case 'yaml':
-          setOutputText(jsonToYaml(jsonData, yamlOptions));
-          break;
-        case 'sql':
-          setOutputText(jsonToSql(jsonData, sqlOptions));
-          break;
-        case 'json':
-          setOutputText(beautifyJson(inputText));
-          break;
+  // Auto-detect format
+  const handleInputChange = (value: string) => {
+    setInputData(value);
+
+    // Auto-detect format if input is empty or very short
+    if (value.trim().length < 10) {
+      const detectedFormat = detectFormat(value);
+      if (detectedFormat !== 'text' && detectedFormat !== fromFormat) {
+        setFromFormat(detectedFormat);
       }
-    } else {
-      // Reverse conversion
-      let jsonData: any;
-
-      switch (inputFormat) {
-        case 'csv':
-          jsonData = csvToJson(inputText);
-          break;
-        case 'xml':
-          jsonData = xmlToJson(inputText);
-          break;
-        case 'yaml':
-          jsonData = yamlToJson(inputText);
-          break;
-        case 'json':
-          jsonData = JSON.parse(inputText);
-          break;
-        default:
-          throw new Error('Unsupported input format for reverse conversion');
-      }
-
-      setOutputText(JSON.stringify(jsonData, null, 2));
     }
   };
 
-  const copyToClipboard = async (text: string) => {
+  // Convert data
+  const handleConvert = async () => {
+    if (!inputData.trim()) {
+      setConversionError('Please enter some data to convert');
+      return;
+    }
+
+    if (!inputValidation.isValid) {
+      setConversionError('Please fix the input data errors before converting');
+      return;
+    }
+
+    setIsConverting(true);
+    setConversionError('');
+
     try {
-      await navigator.clipboard.writeText(text);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error('Failed to copy:', err);
+      const result = await convertData(inputData, fromFormat, toFormat, conversionOptions);
+
+      if (result.success) {
+        setOutputData(result.data || '');
+      } else {
+        setConversionError(result.error || 'Conversion failed');
+      }
+    } catch (error) {
+      setConversionError(`Conversion failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    } finally {
+      setIsConverting(false);
     }
   };
 
-  const downloadFile = () => {
-    const blob = new Blob([outputText], { type: 'text/plain' });
+  // Load example data
+  const loadExample = (format: string) => {
+    setInputData(exampleData[format as keyof typeof exampleData] || '');
+    setFromFormat(format);
+  };
+
+  // Clear all data
+  const clearAll = () => {
+    setInputData('');
+    setOutputData('');
+    setConversionError('');
+  };
+
+  // Copy output
+  const copyOutput = async () => {
+    try {
+      await navigator.clipboard.writeText(outputData);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  };
+
+  // Download output
+  const downloadOutput = () => {
+    const blob = new Blob([outputData], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `converted.${outputFormat}`;
+    a.download = `converted_data.${toFormat}`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
 
-  const loadExample = () => {
-    setInputText(JSON.stringify(exampleData, null, 2));
-    setInputFormat('json');
-    setMode('convert');
-  };
-
-  const formatOptions = [
-    { value: 'json', label: 'JSON', icon: '{}' },
-    { value: 'csv', label: 'CSV', icon: '📊' },
-    { value: 'xml', label: 'XML', icon: '📄' },
-    { value: 'yaml', label: 'YAML', icon: '📝' },
-    { value: 'sql', label: 'SQL', icon: '🗄️' }
-  ];
-
-  const inputStats = getJsonStats(inputText ? JSON.parse(inputText) : {});
-  const outputSize = formatFileSize(new Blob([outputText]).size);
-
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
-      <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white p-4 sm:p-8">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold text-slate-900 dark:text-white mb-4">
-            JSON Converter &{' '}
-            <span className="text-blue-600 dark:text-blue-400">Formatter</span>
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-extrabold mb-4 text-blue-600 dark:text-blue-400">
+            JSON Converter & Data Transformer
           </h1>
-          <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            Convert JSON to CSV, XML, YAML, SQL and vice versa. Fast, free, handles large files.
-            Developer-friendly JSON tools with validation and formatting.
+          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+            Convert between JSON, CSV, XML, YAML, and SQL formats. Validate, format, and transform your data with ease.
           </p>
         </div>
 
-        {/* Mode Selector */}
+        {/* Example Data Buttons */}
         <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">Conversion Mode</h2>
-            <button
-              onClick={() => setShowOptions(!showOptions)}
-              className="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg transition-colors"
-            >
-              <Settings className="w-4 h-4" />
-              Options
-            </button>
-          </div>
-
-          <div className="flex gap-4 mb-4">
-            <button
-              onClick={() => setMode('convert')}
-              className={`px-6 py-3 rounded-lg font-medium transition-colors ${mode === 'convert'
-                ? 'bg-blue-600 text-white'
-                : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
-                }`}
-            >
-              JSON → Other Formats
-            </button>
-            <button
-              onClick={() => setMode('reverse')}
-              className={`px-6 py-3 rounded-lg font-medium transition-colors ${mode === 'reverse'
-                ? 'bg-blue-600 text-white'
-                : 'bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-600'
-                }`}
-            >
-              Other Formats → JSON
-            </button>
-          </div>
-
-          {/* Format Selectors */}
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                {mode === 'convert' ? 'Input Format' : 'Source Format'}
-              </label>
-              <select
-                value={inputFormat}
-                onChange={(e) => setInputFormat(e.target.value as Format)}
-                className="w-full p-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500"
+          <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-4">
+            Try Example Data
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {Object.keys(exampleData).map((format) => (
+              <button
+                key={format}
+                onClick={() => loadExample(format)}
+                className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
               >
-                {formatOptions.map(format => (
-                  <option key={format.value} value={format.value}>
-                    {format.icon} {format.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                {mode === 'convert' ? 'Output Format' : 'Target Format'}
-              </label>
-              <select
-                value={outputFormat}
-                onChange={(e) => setOutputFormat(e.target.value as Format)}
-                className="w-full p-3 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500"
-                disabled={mode === 'reverse'}
-              >
-                {formatOptions.map(format => (
-                  <option key={format.value} value={format.value}>
-                    {format.icon} {format.label}
-                  </option>
-                ))}
-              </select>
+                {format.toUpperCase()} Example
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Format Selectors */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          <FormatSelector
+            selectedFormat={fromFormat}
+            onFormatChange={setFromFormat}
+            direction="from"
+          />
+          <FormatSelector
+            selectedFormat={toFormat}
+            onFormatChange={setToFormat}
+            direction="to"
+            disabledFormats={[fromFormat]}
+          />
+        </div>
+
+        {/* Conversion Options */}
+        <div className="mb-8">
+          <ConversionOptions
+            options={conversionOptions}
+            onOptionsChange={setConversionOptions}
+            fromFormat={fromFormat}
+            toFormat={toFormat}
+          />
+        </div>
+
+        {/* Convert Button */}
+        <div className="text-center mb-8">
+          <button
+            onClick={handleConvert}
+            disabled={isConverting || !inputData.trim() || !inputValidation.isValid}
+            className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-slate-400 disabled:cursor-not-allowed transition-colors font-semibold flex items-center gap-2 mx-auto"
+          >
+            {isConverting ? (
+              <>
+                <RefreshCw className="w-5 h-5 animate-spin" />
+                Converting...
+              </>
+            ) : (
+              <>
+                <ArrowRight className="w-5 h-5" />
+                Convert {fromFormat.toUpperCase()} to {toFormat.toUpperCase()}
+              </>
+            )}
+          </button>
+        </div>
+
+        {/* Error Display */}
+        {conversionError && (
+          <div className="mb-8 p-4 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-700 rounded-lg">
+            <div className="flex items-start gap-2">
+              <AlertCircle className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+              <div>
+                <h3 className="text-red-800 dark:text-red-200 font-medium">Conversion Error</h3>
+                <p className="text-red-700 dark:text-red-300 text-sm mt-1">{conversionError}</p>
+              </div>
             </div>
           </div>
+        )}
 
-          {/* Options Panel */}
-          {showOptions && (
-            <div className="mt-6 p-4 bg-slate-50 dark:bg-slate-700 rounded-lg">
-              <h3 className="font-medium text-slate-900 dark:text-white mb-4">Conversion Options</h3>
+        {/* Input and Output Editors */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          {/* Input Editor */}
+          <div>
+            <CodeEditor
+              value={inputData}
+              onChange={handleInputChange}
+              language={fromFormat}
+              title={`Input (${fromFormat.toUpperCase()})`}
+              placeholder={`Enter your ${fromFormat.toUpperCase()} data here...`}
+              error={inputValidation.error}
+              isValid={inputValidation.isValid}
+            />
+          </div>
 
-              {outputFormat === 'csv' && (
-                <div className="grid md:grid-cols-3 gap-4">
-                  <label className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      checked={csvOptions.flatten}
-                      onChange={(e) => setCsvOptions({ ...csvOptions, flatten: e.target.checked })}
-                      className="rounded"
-                    />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Flatten nested objects</span>
-                  </label>
-                  <label className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      checked={csvOptions.headers}
-                      onChange={(e) => setCsvOptions({ ...csvOptions, headers: e.target.checked })}
-                      className="rounded"
-                    />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">Include headers</span>
-                  </label>
-                  <div>
-                    <label className="block text-xs text-slate-600 dark:text-slate-400 mb-1">Delimiter</label>
-                    <select
-                      value={csvOptions.delimiter}
-                      onChange={(e) => setCsvOptions({ ...csvOptions, delimiter: e.target.value })}
-                      className="w-full p-2 text-sm border border-slate-300 dark:border-slate-600 rounded bg-white dark:bg-slate-600 text-slate-900 dark:text-white"
-                    >
-                      <option value=",">Comma (,)</option>
-                      <option value=";">Semicolon (;)</option>
-                      <option value="\t">Tab</option>
-                    </select>
-                  </div>
-                </div>
-              )}
+          {/* Output Editor */}
+          <div>
+            <CodeEditor
+              value={outputData}
+              onChange={setOutputData}
+              language={toFormat}
+              title={`Output (${toFormat.toUpperCase()})`}
+              placeholder="Converted data will appear here..."
+              readOnly={false}
+              onCopy={copyOutput}
+              onDownload={downloadOutput}
+            />
+          </div>
+        </div>
 
-              {outputFormat === 'xml' && (
-                <div className="grid md:grid-cols-3 gap-4">
-                  <div>
-                    <label className="block text-xs text-slate-600 dark:text-slate-400 mb-1">Root Element</label>
-                    <input
-                      type="text"
-                      value={xmlOptions.rootElement}
-                      onChange={(e) => setXmlOptions({ ...xmlOptions, rootElement: e.target.value })}
-                      className="w-full p-2 text-sm border border-slate-300 dark:border-slate-600 rounded bg-white dark:bg-slate-600 text-slate-900 dark:text-white"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs text-slate-600 dark:text-slate-400 mb-1">Indent</label>
-                    <input
-                      type="number"
-                      value={xmlOptions.indent}
-                      onChange={(e) => setXmlOptions({ ...xmlOptions, indent: Number(e.target.value) })}
-                      className="w-full p-2 text-sm border border-slate-300 dark:border-slate-600 rounded bg-white dark:bg-slate-600 text-slate-900 dark:text-white"
-                      min="0"
-                      max="8"
-                    />
-                  </div>
-                  <label className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      checked={xmlOptions.declaration}
-                      onChange={(e) => setXmlOptions({ ...xmlOptions, declaration: e.target.checked })}
-                      className="rounded"
-                    />
-                    <span className="text-sm text-slate-700 dark:text-slate-300">XML Declaration</span>
-                  </label>
-                </div>
-              )}
-
-              {outputFormat === 'sql' && (
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs text-slate-600 dark:text-slate-400 mb-1">Table Name</label>
-                    <input
-                      type="text"
-                      value={sqlOptions.tableName}
-                      onChange={(e) => setSqlOptions({ ...sqlOptions, tableName: e.target.value })}
-                      className="w-full p-2 text-sm border border-slate-300 dark:border-slate-600 rounded bg-white dark:bg-slate-600 text-slate-900 dark:text-white"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs text-slate-600 dark:text-slate-400 mb-1">Mode</label>
-                    <select
-                      value={sqlOptions.mode}
-                      onChange={(e) => setSqlOptions({ ...sqlOptions, mode: e.target.value as 'INSERT' | 'CREATE' | 'BOTH' })}
-                      className="w-full p-2 text-sm border border-slate-300 dark:border-slate-600 rounded bg-white dark:bg-slate-600 text-slate-900 dark:text-white"
-                    >
-                      <option value="BOTH">CREATE + INSERT</option>
-                      <option value="CREATE">CREATE TABLE only</option>
-                      <option value="INSERT">INSERT only</option>
-                    </select>
-                  </div>
-                </div>
-              )}
-            </div>
+        {/* Action Buttons */}
+        <div className="flex justify-center gap-4 mb-8">
+          <button
+            onClick={clearAll}
+            className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold"
+          >
+            Clear All
+          </button>
+          {outputData && (
+            <>
+              <button
+                onClick={copyOutput}
+                className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold flex items-center gap-2"
+              >
+                <Copy className="w-4 h-4" />
+                Copy Output
+              </button>
+              <button
+                onClick={downloadOutput}
+                className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-semibold flex items-center gap-2"
+              >
+                <Download className="w-4 h-4" />
+                Download
+              </button>
+            </>
           )}
         </div>
 
-        {/* Input/Output Fields */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-8">
-          {/* Input */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Input</h3>
-                {validation.valid ? (
-                  <CheckCircle className="w-5 h-5 text-green-500" />
-                ) : (
-                  <AlertCircle className="w-5 h-5 text-red-500" />
-                )}
-              </div>
-              <button
-                onClick={loadExample}
-                className="flex items-center gap-2 px-3 py-1 bg-blue-100 dark:bg-blue-900 hover:bg-blue-200 dark:hover:bg-blue-800 rounded-lg transition-colors text-sm"
-              >
-                <FileText className="w-4 h-4" />
-                Example
-              </button>
+        {/* How to Use Section */}
+        <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
+            How to Use This Tool
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-3">
+                Step 1: Select Formats
+              </h3>
+              <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
+                <li>• Choose your input format (JSON, CSV, XML, YAML)</li>
+                <li>• Select the desired output format</li>
+                <li>• Configure conversion options if needed</li>
+              </ul>
             </div>
-
-            <textarea
-              value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-              placeholder={`Enter your ${inputFormat.toUpperCase()} data here...`}
-              className="w-full h-80 p-4 border border-slate-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-700 text-slate-900 dark:text-white resize-none focus:ring-2 focus:ring-blue-500 font-mono text-sm"
-            />
-
-            {!validation.valid && (
-              <div className="mt-2 p-2 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded text-red-700 dark:text-red-400 text-sm">
-                {validation.error}
-                {validation.line && ` (Line ${validation.line})`}
-              </div>
-            )}
-
-            {inputText && validation.valid && inputFormat === 'json' && (
-              <div className="mt-2 text-xs text-slate-600 dark:text-slate-400">
-                Size: {formatFileSize(new Blob([inputText]).size)} |
-                Depth: {inputStats.depth} |
-                Keys: {inputStats.keys} |
-                Objects: {inputStats.objects} |
-                Arrays: {inputStats.arrays}
-              </div>
-            )}
-          </div>
-
-          {/* Output */}
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white">Output</h3>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => copyToClipboard(outputText)}
-                  className="flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg transition-colors text-sm"
-                >
-                  <Copy className="w-4 h-4" />
-                  {copied ? 'Copied!' : 'Copy'}
-                </button>
-                <button
-                  onClick={downloadFile}
-                  className="flex items-center gap-2 px-3 py-1 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg transition-colors text-sm"
-                >
-                  <Download className="w-4 h-4" />
-                  Download
-                </button>
-              </div>
-            </div>
-
-            <textarea
-              value={outputText}
-              readOnly
-              placeholder="Converted output will appear here..."
-              className="w-full h-80 p-4 border border-slate-300 dark:border-slate-600 rounded-lg bg-slate-50 dark:bg-slate-700 text-slate-900 dark:text-white resize-none font-mono text-sm"
-            />
-
-            {outputText && (
-              <div className="mt-2 text-xs text-slate-600 dark:text-slate-400">
-                Size: {outputSize}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* How to Use */}
-        <div className="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-lg mb-8">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">How to Use</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">1</span>
-              </div>
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Choose Format</h3>
-              <p className="text-slate-600 dark:text-slate-300 text-sm">
-                Select your input and output formats. Supports JSON, CSV, XML, YAML, and SQL.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-green-600 dark:text-green-400">2</span>
-              </div>
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Paste Data</h3>
-              <p className="text-slate-600 dark:text-slate-300 text-sm">
-                Paste your data in the input field. The tool will validate and convert automatically.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-purple-600 dark:text-purple-400">3</span>
-              </div>
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Copy & Use</h3>
-              <p className="text-slate-600 dark:text-slate-300 text-sm">
-                Copy the converted output or download as a file. All processing happens in your browser.
-              </p>
+            <div>
+              <h3 className="text-lg font-semibold text-slate-800 dark:text-slate-100 mb-3">
+                Step 2: Convert Data
+              </h3>
+              <ul className="text-sm text-slate-600 dark:text-slate-400 space-y-2">
+                <li>• Paste your data in the input editor</li>
+                <li>• Click "Convert" to transform the data</li>
+                <li>• Copy or download the converted result</li>
+              </ul>
             </div>
           </div>
         </div>
 
-        {/* FAQ */}
-        <div className="bg-white dark:bg-slate-800 rounded-xl p-8 shadow-lg">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Frequently Asked Questions</h2>
-          <div className="space-y-6">
-            <div>
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Is my data secure?</h3>
-              <p className="text-slate-600 dark:text-slate-300">
-                Yes! All conversion happens in your browser. No data is sent to any servers, ensuring complete privacy.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">What file sizes are supported?</h3>
-              <p className="text-slate-600 dark:text-slate-300">
-                The tool can handle large files up to several megabytes. Performance depends on your browser's memory capacity.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">Can I convert nested JSON to CSV?</h3>
-              <p className="text-slate-600 dark:text-slate-300">
-                Yes! Enable the "Flatten nested objects" option to convert complex JSON structures to flat CSV format.
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">How accurate are the conversions?</h3>
-              <p className="text-slate-600 dark:text-slate-300">
-                Very accurate! We use industry-standard libraries and handle edge cases like special characters, nested objects, and data types.
-              </p>
-            </div>
-          </div>
+        {/* Footer */}
+        <div className="text-center text-slate-500 dark:text-slate-400 text-sm mt-8">
+          <p>Powered by Next.js, Monaco Editor, and client-side data processing.</p>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
-
